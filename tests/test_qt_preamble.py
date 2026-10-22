@@ -34,6 +34,15 @@ def test_qt_subdir_layout(tmp_path, monkeypatch):
     assert os.environ["QT_PLUGIN_PATH"] == found
 
 
+def test_installer_pins_runtime_deps():
+    # soundfile importiert typing_extensions, cffi braucht pycparser, mido packaging.
+    # pynsist packt nur die hier genannten Raeder ein.
+    cfg = open(os.path.abspath(os.path.join(os.path.dirname(ROOT_FILE), "..", "installer", "installer.cfg")),
+               encoding="utf-8").read()
+    for pin in ("typing_extensions==4.16.0", "pycparser==3.11", "packaging==26.3", "soundfile==0.14.0"):
+        assert pin in cfg
+
+
 def test_preamble_source_is_ascii():
     # pynsist schreibt diese Datei in die Windows-Codepage. Ein Nicht-ASCII-Byte
     # (z. B. ue = FC) macht das Startskript fuer Python 3 unlesbar.

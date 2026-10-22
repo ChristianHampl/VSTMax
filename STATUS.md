@@ -53,7 +53,10 @@ Ursache, warum ein Klick nichts öffnete: pynsist schreibt `AI_Mix_Engineer.laun
 Windows-Runner in der System-Codepage. Der deutsche Kommentar enthielt „ü“ als Byte `FC`.
 Python 3 bricht das Skript dann mit `SyntaxError: Non-UTF-8` ab, noch bevor ein Log entsteht.
 Nachgestellt auf dem Rechner unter `C:\Program Files\AI Mix Engineer` (Installation für alle
-Benutzer). Das Startskript enthält danach nur noch ASCII.
+Benutzer). Das Startskript enthält danach nur noch ASCII. Der nächste Fehler auf demselben
+Rechner: `ModuleNotFoundError: No module named 'typing_extensions'` beim Import von soundfile.
+cffi braucht zusätzlich pycparser, mido packaging. Diese drei Räder stehen jetzt in
+`installer/installer.cfg`.
 
 Vierter Lauf, fertig um 20:35 Uhr Berlin
 ([Run 39831321889](https://github.com/ChristianHampl/VSTMax/actions/runs/39831321889)): Job
