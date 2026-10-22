@@ -1,0 +1,13 @@
+# Laufzeit (alle kostenlos, Open Source, lokal)
+numpy>=1.26
+scipy>=1.11
+soundfile>=0.12
+PySide6>=6.6
+mido>=1.3
+
+# Optional
+# python-rtmidi>=1.5    # MIDI-Remote-Bridge zu Cubase (virtueller MIDI-Port)
+# onnxruntime>=1.17     # nur wenn ein eigenes lokales Klassifizierungsmodell genutzt wird
+
+# Entwicklung / Tests
+pytest>=8.0
