@@ -1,5 +1,14 @@
 # Wenn etwas hakt
 
+## Nach dem Klick passiert nichts
+
+Im Task-Manager nach **pythonw.exe** suchen. Der Pfad muss `AI Mix Engineer` enthalten. Steht der Prozess und die CPU arbeitet, warten: der erste Start prüft viele Bibliotheken und kann eine Minute dauern. Beenden nur diesen Prozess, keinen anderen Python-Prozess.
+
+Liegt kein pythonw.exe mehr, ist der Start abgestürzt, ohne ein Fenster zu öffnen. Diese zwei Dateien im Explorer öffnen (Windows-Taste+R):
+
+- `%APPDATA%\AI_Mix_Engineer.launch.pyw.log`
+- `%APPDATA%\AI-Mix-Engineer\start_error.txt`
+
 ## Die Plug-ins erscheinen nicht in Cubase
 
 Hier **Für Cubase einrichten** klicken und Cubase neu starten. Im Plug-in-Manager *Blockierte Plug-ins* prüfen und neu scannen. Der Ablageort ist der Benutzerordner `AppData\Local\Programs\Common\VST3\AIME.vst3`.

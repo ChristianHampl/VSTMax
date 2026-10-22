@@ -45,7 +45,9 @@ Dritter Lauf, fertig um 20:04 Uhr Berlin
 ([Run 39826687581](https://github.com/ChristianHampl/VSTMax/actions/runs/39826687581)): Job
 `installer` erfolgreich. Artefakt **AI-Mix-Engineer-Setup** (Zip, darin
 `AI-Mix-Engineer-Setup.exe`, 135 MB, NSIS). Die Datei wurde hier nur als Windows-Programm
-erkannt, nicht ausgeführt. Auf einem Cubase-Rechner ist sie nicht installiert worden.
+erkannt, nicht ausgeführt. Auf einem Rechner installiert öffnete ein Klick kein Fenster. Der
+Prozess heißt `pythonw.exe` im Ordner `AI Mix Engineer`. Die Ausgabe liegt in
+`%APPDATA%\AI_Mix_Engineer.launch.pyw.log`. In Cubase geladen wurde das Setup nicht.
 
 ## Nicht ausgeführt
 
@@ -53,7 +55,7 @@ erkannt, nicht ausgeführt. Auf einem Cubase-Rechner ist sie nicht installiert w
 |---|---|
 | **Jeder Test in Cubase 15** (Plug-ins laden, Kanalnamen über `IInfoListener`, Capture-Ausrichtung mit Latenzkompensation, Parameter-Push in Cubase, Undo-Verhalten von Cubase, Automation-Interaktion) | Kein Cubase verfügbar. Prüfliste unten. |
 | **MIDI-Remote-Skript in Cubase** | Nur gegen eine Attrappe ausgeführt. Unverifiziert sind insbesondere `bindToPitchBend`, `mOnTitleChange`, `mOnDisplayValueChange` sowie das Bank-Verhalten von `makeMixerBankZone`. Fallback-Schalter stehen im Skript. |
-| **Setup.exe auf einem echten PC / in Cubase** | Die Datei wurde am 22. Oktober 2026 um 20:04 Uhr Berlin vom Windows-Runner erzeugt (Run 39826687581). Installiert und in Cubase geladen wurde sie nicht. |
+| **Setup.exe in Cubase** | Die Datei aus Run 39826687581 wurde installiert. Ein Klick öffnete kein Fenster (siehe oben). In Cubase geladen wurde sie nicht. |
 | **PowerShell-/Batch-Skripte lokal** | `build.ps1` ist auf dem GitHub-Runner gelaufen (Compile, CTest, Validator). `install_windows.ps1`, `fetch_vst3sdk.ps1`, `run_tests.ps1` und `start_gui.bat` wurden hier nicht ausgeführt. |
 | **Parameter-Push im Controller unter Linux** | Das SDK liefert unter Linux keinen UI-Timer (`Timer::create` → nullptr). Unter Windows/macOS vorhanden, dort aber nicht getestet. |
 | **A/B-Wiedergabe** (QtMultimedia) | Kein Audiogerät in der Testumgebung; nur die lautheitsangeglichenen Puffer wurden geprüft. |
