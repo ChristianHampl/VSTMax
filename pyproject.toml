@@ -30,8 +30,7 @@ aime-gui = "app.main:main"
 include = ["engine*", "app*", "integration*"]
 
 [tool.setuptools.package-data]
-integration = ["protocol/*.json", "cubase/midi_remote/**/*.js"]
-
+integration = ["protocol/*.json", "midi_remote/*.json", "midi_remote/AIME/Bridge/*.js"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = [
