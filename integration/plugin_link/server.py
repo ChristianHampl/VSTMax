@@ -239,8 +239,12 @@ class LinkServer:
             ch = 1 if s.channels == 1 else 2
             with sf.SoundFile(out, "x", samplerate=sr, channels=ch, subtype="FLOAT") as w:
                 for o in range(0, n_total, 1 << 16):
-                    blk = np.asarray(buf[o:o + (1 << 16)])
+                    blk = np.array(buf[o:o + (1 << 16)], copy=True)
                     w.write(blk[:, :1] if ch == 1 else blk)
+            # Windows sperrt eine Datei, solange ein Memmap-Handle offen ist. Unter Linux
+            # gelingt das Löschen trotzdem, deshalb fiel das nur im Windows-Lauf auf.
+            _close_memmap(buf)
+            _close_memmap(raw)
             del buf, raw
             (folder / f".{name}.tmp.npy").unlink(missing_ok=True)
             s.path.unlink(missing_ok=True)
@@ -362,6 +366,13 @@ class LinkServer:
                 self.on_event(kind, data)
             except Exception:
                 pass
+
+
+def _close_memmap(arr) -> None:
+    mm = getattr(arr, "_mmap", None)
+    if mm is not None:
+        mm.close()
+        arr._mmap = None
 
 
 def _safe_name(name: str) -> str:

@@ -25,12 +25,17 @@ ausdrücklich als *nicht ausgeführt* markiert.
 | Mastering/Album/Referenz | `test_mastering_album_reference.py` | Ziel-LUFS ±0,5, True Peak ≤ Grenze + 0,1 dB; Überkompressionsschutz verfehlt das Ziel bewusst und dokumentiert das; Album einheitlich ≤ 0,6 LU Streuung, relativer Modus erhält Reihenfolge; Referenzvorschläge gedämpft/begrenzt |
 | Originalschutz | Tests in `test_audio_io.py`, Capture, Watcher, Album | Quellen werden nie überschrieben |
 
-## Windows-Installer
+## Windows-Build (GitHub Actions, 22. Oktober 2026, 19:40 Uhr Berlin)
 
-`AI-Mix-Engineer-Setup.exe` wird von GitHub Actions (Workflow `Windows-Installer`) auf einem
-Windows-Rechner mit dem Microsoft-Compiler gebaut und als Artefakt abgelegt. Dieser Lauf ist zum
-Zeitpunkt dieses Stands noch nicht ausgeführt. Auch ein erfolgreicher Build heißt nicht, dass das
-Setup schon auf einem Cubase-Rechner installiert wurde.
+Auf einem Windows-Runner mit dem Microsoft-Compiler:
+
+- DSP-Tests: 1 von 1 bestanden (CTest).
+- Steinberg-Validator: **141 Tests bestanden, 0 fehlgeschlagen.**
+- pytest: 57 bestanden, 4 fehlgeschlagen. Ursache: Windows sperrt die temporäre Aufnahmedatei, solange
+  sie noch als Memmap offen ist. Behoben durch explizites Schließen vor dem Löschen. Der Installer
+  (`AI-Mix-Engineer-Setup.exe`) wird erst vom nächsten grünen Lauf erzeugt.
+
+Das Setup ist damit noch nicht auf einem Cubase-Rechner installiert worden.
 
 ## Nicht ausgeführt
 
