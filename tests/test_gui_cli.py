@@ -60,6 +60,23 @@ def test_gui_full_flow(qapp, song_dir, tmp_path):
     win.close()
 
 
+def test_help_tab_has_setup_and_topics(qapp):
+    from app.gui.main_window import MainWindow
+
+    win = MainWindow()
+    idx = next(i for i in range(win.tabs.count()) if win.tabs.tabText(i) == "Hilfe")
+    win.tabs.setCurrentIndex(idx)
+    qapp.processEvents()
+    assert "Setup-Datei" in win.help_panel.view.toPlainText()
+    win.help_panel.topics.setCurrentRow(1)
+    qapp.processEvents()
+    assert "AIME Channel" in win.help_panel.view.toPlainText()
+    win.help_panel.topics.setCurrentRow(4)
+    qapp.processEvents()
+    assert "Plug-in-Manager" in win.help_panel.view.toPlainText()
+    win.close()
+
+
 def test_gui_cubase_tab_lists_instances(qapp, tmp_path):
     from app.gui.main_window import MainWindow
     from tests.test_plugin_link import FakePlugin

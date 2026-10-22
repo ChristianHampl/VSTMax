@@ -30,6 +30,10 @@ if (AIME_BUILD_VALIDATOR AND NOT TARGET validator)
 	add_subdirectory (${vst3sdk_SOURCE_DIR}/public.sdk/samples/vst-hosting/validator ${PROJECT_BINARY_DIR}/validator)
 endif ()
 
+if (MSVC)
+	add_compile_options (/utf-8) # Quelltexte sind UTF-8 (deutsche Kommentare)
+endif ()
+
 set (AIME_DSP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../dsp/core)
 
 smtg_add_vst3plugin (AIME

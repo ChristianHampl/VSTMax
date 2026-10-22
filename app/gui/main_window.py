@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import numpy as np
@@ -18,6 +19,7 @@ from engine.profiles import Character, list_profiles
 
 from ..orchestration.pipeline import Pipeline
 from ..project.model import PROJECT_SUFFIX, Project
+from .help_panel import HelpPanel
 from .worker import start_worker
 
 CHAR_SLIDERS = [  # Schlüssel, Beschriftung, min, max, Schritt
@@ -90,6 +92,8 @@ class MainWindow(QMainWindow):
         tabs.addTab(self._build_cubase_tab(), "Cubase")
         tabs.addTab(self._build_album_tab(), "Album")
         tabs.addTab(self._build_watch_tab(), "Ordnerüberwachung")
+        self.help_panel = HelpPanel(self.install_cubase_files)
+        tabs.addTab(self.help_panel, "Hilfe")
         self.tabs = tabs
 
         self.progress = QProgressBar()
@@ -117,9 +121,28 @@ class MainWindow(QMainWindow):
 
         self.watch_event.connect(self.watch_log.appendPlainText)
         self.load_project(self.project)
+        self._open_help_once()
         self._link_timer = QTimer(self)
         self._link_timer.timeout.connect(self.refresh_instances)
         self._link_timer.start(1000)
+
+    def _open_help_once(self):
+        if os.name != "nt":
+            return
+        marker = Path(os.environ.get("APPDATA", str(Path.home()))) / "AI-Mix-Engineer" / "hilfe_gesehen"
+        if marker.exists():
+            return
+        self.tabs.setCurrentWidget(self.help_panel)
+        marker.parent.mkdir(parents=True, exist_ok=True)
+        marker.write_text("1", encoding="utf-8")
+
+    def install_cubase_files(self):
+        from ..cubase_setup import install_for_this_machine
+
+        result = install_for_this_machine()
+        text = "\n".join(result["messages"])
+        self.append_log(text)
+        QMessageBox.information(self, "Cubase einrichten", text)
 
     # =============================================================== Projekt-Tab
     def _build_project_tab(self) -> QWidget:
@@ -496,6 +519,9 @@ class MainWindow(QMainWindow):
         self.btn_push = QPushButton("3. Werte an Cubase senden")
         self.btn_undo = QPushButton("Letztes Senden rückgängig")
         self.btn_auto = QPushButton("Alles automatisch (1–3)")
+        self.btn_setup = QPushButton("Plug-in installieren")
+        self.btn_setup.setToolTip("Kopiert AIME.vst3 und das MIDI-Skript in die Cubase-Ordner")
+        self.btn_setup.clicked.connect(self.install_cubase_files)
         self.btn_capture.clicked.connect(lambda: self.run_autopilot("capture"))
         self.btn_plan.clicked.connect(lambda: self.run_autopilot("plan"))
         self.btn_push.clicked.connect(lambda: self.run_autopilot("push"))
@@ -517,7 +543,7 @@ class MainWindow(QMainWindow):
         row.addWidget(self.lbl_midi, 1)
         top.addRow(row)
         acts = QHBoxLayout()
-        for b_ in (self.btn_capture, self.btn_plan, self.btn_push, self.btn_undo, self.btn_auto):
+        for b_ in (self.btn_setup, self.btn_capture, self.btn_plan, self.btn_push, self.btn_undo, self.btn_auto):
             acts.addWidget(b_)
         lay = QVBoxLayout()
         lay.addWidget(info)

@@ -25,6 +25,13 @@ ausdrücklich als *nicht ausgeführt* markiert.
 | Mastering/Album/Referenz | `test_mastering_album_reference.py` | Ziel-LUFS ±0,5, True Peak ≤ Grenze + 0,1 dB; Überkompressionsschutz verfehlt das Ziel bewusst und dokumentiert das; Album einheitlich ≤ 0,6 LU Streuung, relativer Modus erhält Reihenfolge; Referenzvorschläge gedämpft/begrenzt |
 | Originalschutz | Tests in `test_audio_io.py`, Capture, Watcher, Album | Quellen werden nie überschrieben |
 
+## Windows-Installer
+
+`AI-Mix-Engineer-Setup.exe` wird von GitHub Actions (Workflow `Windows-Installer`) auf einem
+Windows-Rechner mit dem Microsoft-Compiler gebaut und als Artefakt abgelegt. Dieser Lauf ist zum
+Zeitpunkt dieses Stands noch nicht ausgeführt. Auch ein erfolgreicher Build heißt nicht, dass das
+Setup schon auf einem Cubase-Rechner installiert wurde.
+
 ## Nicht ausgeführt
 
 | Was | Warum / was ist zu tun |

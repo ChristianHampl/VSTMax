@@ -31,6 +31,8 @@ include = ["engine*", "app*", "integration*"]
 
 [tool.setuptools.package-data]
 integration = ["protocol/*.json", "midi_remote/*.json", "midi_remote/AIME/Bridge/*.js"]
+app = ["help/*.md"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = [

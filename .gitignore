@@ -14,3 +14,5 @@ tests/fixtures/generated/
 *.aiff
 !tests/fixtures/static/*.wav
 .DS_Store
+installer/payload/
+installer/build/

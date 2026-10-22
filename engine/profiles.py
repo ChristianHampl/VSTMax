@@ -7,7 +7,16 @@ import json
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
-PROFILE_DIR = Path(__file__).resolve().parent.parent / "profiles"
+def _profile_dir() -> Path:
+    """Repo-Layout (profiles/ neben engine/) und Installer-Layout (profiles/ im Programmordner)."""
+    here = Path(__file__).resolve().parent
+    for c in (here.parent / "profiles", here.parent.parent.parent / "profiles"):
+        if (c / "_base.json").is_file():
+            return c
+    return here.parent / "profiles"
+
+
+PROFILE_DIR = _profile_dir()
 
 
 def deep_merge(base: dict, override: dict) -> dict:

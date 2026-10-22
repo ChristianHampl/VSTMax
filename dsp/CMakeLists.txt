@@ -11,7 +11,7 @@ add_library (aime_dsp INTERFACE)
 target_include_directories (aime_dsp INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/core)
 
 if (MSVC)
-	set (AIME_WARN /W4 /permissive-)
+	set (AIME_WARN /W4 /permissive- /utf-8)
 else ()
 	set (AIME_WARN -Wall -Wextra -Wpedantic -Wshadow)
 endif ()

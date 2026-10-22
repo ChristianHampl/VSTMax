@@ -24,21 +24,20 @@ ML-Modelle.
 > offiziellen Steinberg-Validator geprüft. **In Cubase selbst und unter Windows wurde noch nichts
 > ausgeführt.**
 
-## Schnellstart (Windows 10/11)
+## Installation (Windows 10/11)
 
-1. Voraussetzungen installieren: [Python 3.11+](https://www.python.org/downloads/windows/),
-   [Git](https://git-scm.com/download/win), Visual Studio 2022 Build Tools mit „Desktopentwicklung mit C++“
-   (enthält CMake). Für MIDI Remote zusätzlich einen virtuellen MIDI-Treiber, z. B. loopMIDI.
-2. In PowerShell im Projektordner:
-   ```powershell
-   powershell -ExecutionPolicy Bypass -File scripts\build.ps1            # holt das VST3 SDK, baut, testet, validiert
-   powershell -ExecutionPolicy Bypass -File scripts\install_windows.ps1  # Python-Umgebung, Plug-in, MIDI-Remote-Skript
-   ```
-3. GUI starten: `scripts\start_gui.bat` oder `.venv\Scripts\python -m app gui`.
+Ein Doppelklick. Python, Git und Visual Studio brauchst du dafür nicht.
 
-Ohne Cubase-Anbindung funktioniert der Datei-Workflow: Stems exportieren → in die App ziehen →
-„Mischen, Mastern & Exportieren“. Dabei entstehen Mix, Master, Bus-Stems, Bericht, Presets (`.vstpreset`)
-und ein Einrichtungsblatt für Cubase.
+1. Unter [Actions → Windows-Installer](https://github.com/ChristianHampl/VSTMax/actions/workflows/windows-installer.yml)
+   den letzten grünen Lauf öffnen und das Artefakt **AI-Mix-Engineer-Setup** herunterladen.
+2. `AI-Mix-Engineer-Setup.exe` starten. Die App erscheint im Startmenü.
+3. App öffnen. Der Tab **Hilfe** erklärt die Cubase-Vorlage, den Ablauf und die Fehlerbehebung.
+   Der Knopf **Für Cubase einrichten** kopiert Plug-in und MIDI-Skript.
+
+Einrichtung und Bedienung stehen in der App, nicht in Textdateien.
+
+Wer selbst bauen will (Compiler, SDK, Tests): `scripts\build.ps1` und `scripts\install_windows.ps1`.
+Details und der ehrliche Teststand: [STATUS.md](STATUS.md).
 
 ## Kommandozeile
 
