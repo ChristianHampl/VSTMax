@@ -5,7 +5,7 @@ Header 'VST3' + int32 Version (1) + 32 Byte ASCII-Klassen-ID + int64 Offset der
 Chunk-Liste; danach Datenchunks ('Comp' = Komponenten-Zustand); am Ende 'List' +
 int32 Anzahl + Einträge (ID, int64 Offset, int64 Größe). Little Endian.
 
-Der Komponenten-Zustand ist das eigene AIME-Format (siehe plugins/common/aime_state.h):
+Der Komponenten-Zustand ist das eigene AIME-Format (siehe dsp/core/aime_state.h):
 'AIMS' + uint32 Version + uint32 Anzahl + Anzahl x (uint32 Param-ID, float64 Klartextwert)
 + uint32 Länge + UTF-8 Instanz-Label.
 """
@@ -97,7 +97,7 @@ def export_plan_presets(plan: dict, out_dir: str | Path) -> dict:
     for t in plan["tracks"]:
         if not t.get("enabled"):
             continue
-        vals, notes = P.channel_params(t)
+        vals, notes = P.channel_params(t, plan.get("sample_rate"))
         p = out / f"AIME Channel - {_safe(t['name'])}.vstpreset"
         p.write_bytes(build_preset("channel", vals, t["name"]))
         written["tracks"][t["id"]] = str(p)
@@ -108,6 +108,13 @@ def export_plan_presets(plan: dict, out_dir: str | Path) -> dict:
         p = out / f"AIME Bus - {_safe(gid)}.vstpreset"
         p.write_bytes(build_preset("bus", vals, gid))
         written["buses"][gid] = str(p)
+    if plan.get("mix_bus"):
+        vals, notes = P.mixbus_params(plan["mix_bus"])
+        p = out / "AIME Bus - Mixbus (Stereo Out).vstpreset"
+        p.write_bytes(build_preset("bus", vals, "mix_bus"))
+        written["buses"]["mix_bus"] = str(p)
+        if notes:
+            written["notes"]["mix_bus"] = notes
     mvals, mnotes = P.master_params(plan.get("_master_report"), plan.get("master", {}))
     p = out / "AIME Master.vstpreset"
     p.write_bytes(build_preset("master", mvals, "master"))

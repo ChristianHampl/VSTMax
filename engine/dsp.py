@@ -215,13 +215,22 @@ def split_band(x: np.ndarray, sr: int, freq: float, q: float = 0.7071, kind: str
 
 def deess(x: np.ndarray, sr: int, freq: float, threshold_db: float, range_db: float = 8.0,
           attack_ms: float = 1.0, release_ms: float = 60.0) -> tuple[np.ndarray, dict]:
-    rest, high = split_band(x, sr, freq)
+    """Überblendung trocken <-> High-Shelf (-range_db): oberhalb von freq wird exakt um die
+    momentane Gain Reduction abgesenkt (eine Subtraktion x - HPF(x) erreicht wegen der
+    Phasendrehung des Hochpasses nur wenige dB)."""
+    x = ensure_2d(x)
+    _, high = split_band(x, sr, freq)
     lvl_db = lin_to_db(block_peak(high))
     target = np.clip(compressor_gain_computer(lvl_db, threshold_db, 4.0, 3.0), 0, range_db)
     bsr = sr / ENV_BLOCK
     gr = smooth_ballistics(target, time_coef(attack_ms, bsr), time_coef(release_ms, bsr), 0.0)
-    g = db_to_lin(-expand_blocks(gr, high.shape[0]))
-    return rest + high * g[:, None], {"max_gr_db": float(gr.max()) if gr.size else 0.0}
+    if range_db <= 0.01:
+        return x, {"max_gr_db": 0.0}
+    b, a = biquad_coeffs("highshelf", freq, sr, -range_db, 0.7071)
+    shelf = apply_biquad(x, b, a)
+    floor = db_to_lin(-range_db)
+    mix = (1.0 - db_to_lin(-expand_blocks(gr, x.shape[0]))) / (1.0 - floor)
+    return x + mix[:, None] * (shelf - x), {"max_gr_db": float(gr.max()) if gr.size else 0.0}
 
 
 def dynamic_band(x: np.ndarray, sr: int, freq: float, q: float, threshold_db: float, range_db: float,

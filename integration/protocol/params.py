@@ -76,7 +76,7 @@ def _clip_note(notes: list, key: str, p: dict, v: float):
         notes.append(f"{key}={v:.2f} außerhalb {p['min']}..{p['max']} - begrenzt")
 
 
-def channel_params(t: dict) -> tuple[dict[str, float], list[str]]:
+def channel_params(t: dict, sample_rate: float | None = None) -> tuple[dict[str, float], list[str]]:
     """Mix-Plan-Spur -> AIME-Channel-Parameter (Klartextwerte)."""
     notes: list[str] = []
     v = defaults("channel")
@@ -106,12 +106,19 @@ def channel_params(t: dict) -> tuple[dict[str, float], list[str]]:
     dyn = t.get("dyn_eq", [])
     if len(dyn) > 2:
         notes.append(f"{len(dyn) - 2} dynamische Bänder nicht übertragbar (max. 2)")
+    sc_sources = {d["sidechain"] for d in dyn[:2] if d.get("sidechain")}
+    if len(sc_sources) > 1:
+        notes.append("Mehrere Sidechain-Quellen - das Plugin hat nur einen Sidechain-Eingang; "
+                     f"nur '{sorted(sc_sources)[0]}' wird verwendet")
     for i, d in enumerate(dyn[:2], start=1):
         v.update({f"dyn{i}_on": 1.0, f"dyn{i}_freq": d["freq"], f"dyn{i}_q": d["q"],
                   f"dyn{i}_threshold_db": d.get("threshold_db") if d.get("threshold_db") is not None else -30.0,
                   f"dyn{i}_range_db": d["range_db"]})
-        if d.get("sidechain"):
+        if d.get("sidechain") and d["sidechain"] == sorted(sc_sources)[0]:
+            v[f"dyn{i}_sidechain"] = 1.0
             notes.append(f"Dyn-Band {i}: Sidechain-Eingang in Cubase mit Spur '{d['sidechain']}' verbinden")
+    if t.get("delay_samples") and sample_rate:
+        v["align_delay_ms"] = 1000.0 * t["delay_samples"] / sample_rate
     c = t.get("comp", {})
     if c.get("enabled"):
         v.update(comp_on=1.0, comp_threshold_db=c["threshold_db"], comp_ratio=c["ratio"], comp_attack_ms=c["attack_ms"],
@@ -160,12 +167,31 @@ def master_params(report: dict | None, plan_master: dict) -> tuple[dict[str, flo
         bc = report.get("bus_comp")
         if bc:
             v.update(comp_on=1.0, comp_threshold_db=bc["threshold_db"], comp_ratio=bc["ratio"],
-                     comp_attack_ms=bc["attack_ms"], comp_release_ms=bc["release_ms"], comp_knee_db=bc["knee_db"])
-        v["input_db"] = report.get("gain_db", 0.0)
-        notes.append("Input-Gain bezieht sich auf den Mixpegel des Offline-Renderings; in Cubase am AIME-Master-"
+                     comp_attack_ms=bc["attack_ms"], comp_release_ms=bc["release_ms"], comp_knee_db=bc["knee_db"],
+                     comp_makeup_db=bc.get("makeup_db", 0.0))
+        v["limiter_gain_db"] = report.get("gain_db", 0.0)
+        notes.append("Limiter-Drive bezieht sich auf den Mixpegel des Offline-Renderings; in Cubase am AIME-Master-"
                      "Lautheitsmesser nachkontrollieren")
     v["limiter_on"] = 1.0
     v["ceiling_dbtp"] = plan_master.get("true_peak_db", -1.0)
+    pk = by_key("master")
+    for k, val in v.items():
+        _clip_note(notes, k, pk[k], val)
+    return v, notes
+
+
+def mixbus_params(mix_bus: dict) -> tuple[dict[str, float], list[str]]:
+    """Mixbus (Stereo Out, vor AIME Master): fester Eingangsgain + Glue-Kompressor."""
+    notes: list[str] = []
+    v = defaults("bus")
+    v["input_db"] = mix_bus.get("input_gain_db") or 0.0
+    c = mix_bus.get("comp", {})
+    if c.get("enabled") and c.get("threshold_db") is not None:
+        v.update(comp_on=1.0, comp_threshold_db=c["threshold_db"], comp_ratio=c["ratio"], comp_attack_ms=c["attack_ms"],
+                 comp_release_ms=c["release_ms"], comp_knee_db=c.get("knee_db", 6.0), comp_makeup_db=0.0)
+    pk = by_key("bus")
+    for k, val in v.items():
+        _clip_note(notes, k, pk[k], val)
     return v, notes
 
 

@@ -102,9 +102,11 @@ def master(mix: np.ndarray, sr: int, s: MasterSettings, log: list | None = None)
         pre = lmod.integrated_loudness(x, sr)
         x, cst = dsp.compress(x, sr, thr, c["ratio"], c["attack_ms"], c["release_ms"], c["knee_db"])
         post = lmod.integrated_loudness(x, sr)
+        makeup = 0.0
         if math.isfinite(pre) and math.isfinite(post):
-            x *= dsp.db_to_lin(pre - post)
-        report["bus_comp"] = {"threshold_db": thr, **c, "stats": cst}
+            makeup = pre - post
+            x *= dsp.db_to_lin(makeup)
+        report["bus_comp"] = {"threshold_db": thr, **c, "makeup_db": round(makeup, 3), "stats": cst}
         log.append({"track": "master", "param": "bus_comp", "value": thr,
                     "reason": f"Glue-Kompression {c['ratio']}:1, Ziel {c['target_gr_db']} dB GR"})
 

@@ -52,7 +52,8 @@ td,th{{border:1px solid #ccc;padding:6px;font-size:13px;vertical-align:top}}th{{
 <p class="note">Diese Liste überträgt den Mix-Plan in Cubase, falls Plugin-Link/MIDI-Remote nicht genutzt werden.
 1) Gruppenkanäle anlegen (Drums, Bass, Guitars, Vocals, Keys) und Spurausgänge darauf routen.
 2) Auf jede Spur <b>AIME Channel</b> als ersten Insert laden und das genannte Preset laden.
-3) Auf Gruppenkanäle <b>AIME Bus</b> mit dem jeweiligen Preset, auf den Stereo-Out <b>AIME Master</b>.
+3) Auf Gruppenkanäle <b>AIME Bus</b> mit dem jeweiligen Preset. Auf den Stereo-Out zuerst
+<b>AIME Bus</b> mit dem Preset „Mixbus (Stereo Out)“, danach <b>AIME Master</b>.
 4) FX-Kanäle: Reverb (Decay {fx['reverb']['decay_s']} s, Predelay {fx['reverb']['predelay_ms']} ms) und
 Delay ({fx['delay']['time_s'] * 1000:.0f} ms = {fx['delay']['tempo_bpm']} BPM, Feedback {fx['delay']['feedback']:.0%}).
 5) Panorama bei Mono-Spuren im Cubase-Panner setzen (Plugin-Pan wirkt nur bei Stereo-Spuren).
