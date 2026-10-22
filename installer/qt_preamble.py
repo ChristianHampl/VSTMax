@@ -1,12 +1,12 @@
-# Wird vom Installer vor dem Start der App ausgeführt.
-# Qt sucht sein Plattform-Plug-in sonst am falschen Ort und beendet sich ohne Fenster,
-# weil der Start über pythonw.exe keine Konsole hat.
+# Laeuft vor dem App-Start. Nur ASCII: pynsist schreibt das Startskript auf Windows
+# in der System-Codepage (ue oft als Byte FC). Python 3 liest .py als UTF-8 und
+# bricht dann mit SyntaxError ab, bevor ein Fenster oder ein Log entsteht.
 import os
 from pathlib import Path
 
 
 def configure_qt(install_dir) -> str | None:
-    """Setzt die Qt-Plug-in-Pfade, wenn das Paket sie enthält. Sonst bleibt der Qt-Standardpfad."""
+    """Qt-Plugin-Pfad setzen, wenn der Ordner existiert. Sonst Qt-Standardpfad."""
     pkg = Path(install_dir) / "pkgs" / "PySide6"
     # Windows-Rad 6.12: PySide6/plugins. Linux-Rad: PySide6/Qt/plugins.
     for plugins in (pkg / "plugins", pkg / "Qt" / "plugins"):

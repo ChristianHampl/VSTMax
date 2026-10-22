@@ -34,6 +34,13 @@ def test_qt_subdir_layout(tmp_path, monkeypatch):
     assert os.environ["QT_PLUGIN_PATH"] == found
 
 
+def test_preamble_source_is_ascii():
+    # pynsist schreibt diese Datei in die Windows-Codepage. Ein Nicht-ASCII-Byte
+    # (z. B. ue = FC) macht das Startskript fuer Python 3 unlesbar.
+    path = os.path.join(os.path.dirname(ROOT_FILE), "..", "installer", "qt_preamble.py")
+    open(os.path.abspath(path), "rb").read().decode("ascii")
+
+
 def test_missing_plugins_do_not_override(tmp_path, monkeypatch):
     monkeypatch.setenv("QT_QPA_PLATFORM_PLUGIN_PATH", "unchanged")
     assert _preamble().configure_qt(tmp_path) is None

@@ -49,6 +49,12 @@ erkannt, nicht ausgeführt. Auf einem Rechner installiert öffnete ein Klick kei
 Prozess heißt `pythonw.exe` im Ordner `AI Mix Engineer`. Die Ausgabe liegt in
 `%APPDATA%\AI_Mix_Engineer.launch.pyw.log`. Diese Datei fehlte auf dem Rechner, der Start hat Python also nicht erreicht.
 
+Ursache, warum ein Klick nichts öffnete: pynsist schreibt `AI_Mix_Engineer.launch.pyw` auf dem
+Windows-Runner in der System-Codepage. Der deutsche Kommentar enthielt „ü“ als Byte `FC`.
+Python 3 bricht das Skript dann mit `SyntaxError: Non-UTF-8` ab, noch bevor ein Log entsteht.
+Nachgestellt auf dem Rechner unter `C:\Program Files\AI Mix Engineer` (Installation für alle
+Benutzer). Das Startskript enthält danach nur noch ASCII.
+
 Vierter Lauf, fertig um 20:35 Uhr Berlin
 ([Run 39831321889](https://github.com/ChristianHampl/VSTMax/actions/runs/39831321889)): Job
 `installer` erfolgreich. Neues Artefakt **AI-Mix-Engineer-Setup**, erneut ein NSIS-Programm, 135 MB.
