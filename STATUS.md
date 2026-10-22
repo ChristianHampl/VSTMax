@@ -47,7 +47,13 @@ Dritter Lauf, fertig um 20:04 Uhr Berlin
 `AI-Mix-Engineer-Setup.exe`, 135 MB, NSIS). Die Datei wurde hier nur als Windows-Programm
 erkannt, nicht ausgeführt. Auf einem Rechner installiert öffnete ein Klick kein Fenster. Der
 Prozess heißt `pythonw.exe` im Ordner `AI Mix Engineer`. Die Ausgabe liegt in
-`%APPDATA%\AI_Mix_Engineer.launch.pyw.log`. In Cubase geladen wurde das Setup nicht.
+`%APPDATA%\AI_Mix_Engineer.launch.pyw.log`. Diese Datei fehlte auf dem Rechner, der Start hat Python also nicht erreicht.
+
+Vierter Lauf, fertig um 20:35 Uhr Berlin
+([Run 39831321889](https://github.com/ChristianHampl/VSTMax/actions/runs/39831321889)): Job
+`installer` erfolgreich. Neues Artefakt **AI-Mix-Engineer-Setup**, erneut ein NSIS-Programm, 135 MB.
+Dieser Build zeigt vor den schweren Importen ein Startfenster und bei einem Python-Fehler eine
+Meldung. Hier nicht ausgeführt, in Cubase nicht geladen.
 
 ## Nicht ausgeführt
 
@@ -55,7 +61,7 @@ Prozess heißt `pythonw.exe` im Ordner `AI Mix Engineer`. Die Ausgabe liegt in
 |---|---|
 | **Jeder Test in Cubase 15** (Plug-ins laden, Kanalnamen über `IInfoListener`, Capture-Ausrichtung mit Latenzkompensation, Parameter-Push in Cubase, Undo-Verhalten von Cubase, Automation-Interaktion) | Kein Cubase verfügbar. Prüfliste unten. |
 | **MIDI-Remote-Skript in Cubase** | Nur gegen eine Attrappe ausgeführt. Unverifiziert sind insbesondere `bindToPitchBend`, `mOnTitleChange`, `mOnDisplayValueChange` sowie das Bank-Verhalten von `makeMixerBankZone`. Fallback-Schalter stehen im Skript. |
-| **Setup.exe in Cubase** | Die Datei aus Run 39826687581 wurde installiert. Ein Klick öffnete kein Fenster (siehe oben). In Cubase geladen wurde sie nicht. |
+| **Setup.exe in Cubase** | Run 39826687581 wurde installiert, ein Klick öffnete kein Fenster, die Start-Protokolldatei fehlte. Run 39831321889 ist das neuere Setup und wurde hier nicht ausgeführt. In Cubase geladen wurde keines. |
 | **PowerShell-/Batch-Skripte lokal** | `build.ps1` ist auf dem GitHub-Runner gelaufen (Compile, CTest, Validator). `install_windows.ps1`, `fetch_vst3sdk.ps1`, `run_tests.ps1` und `start_gui.bat` wurden hier nicht ausgeführt. |
 | **Parameter-Push im Controller unter Linux** | Das SDK liefert unter Linux keinen UI-Timer (`Timer::create` → nullptr). Unter Windows/macOS vorhanden, dort aber nicht getestet. |
 | **A/B-Wiedergabe** (QtMultimedia) | Kein Audiogerät in der Testumgebung; nur die lautheitsangeglichenen Puffer wurden geprüft. |
