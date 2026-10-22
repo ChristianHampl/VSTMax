@@ -249,6 +249,7 @@ private:
 			out.reset (out.targetValue ());
 			widthS.reset (widthS.targetValue ());
 			panS.reset (panS.targetValue ());
+			comp.snap ();
 			sat.prepare (sr);
 		}
 	}
@@ -378,6 +379,8 @@ private:
 			in.reset (in.targetValue ());
 			out.reset (out.targetValue ());
 			parAmt.reset (parAmt.targetValue ());
+			parComp.snap ();
+			comp.snap ();
 			parSat.prepare (sr);
 			sat.prepare (sr);
 		}
@@ -490,6 +493,7 @@ private:
 			in.reset (in.targetValue ());
 			drive.reset (drive.targetValue ());
 			out.reset (out.targetValue ());
+			comp.snap ();
 		}
 	}
 	void processChain (float** ch, int nch, int n)

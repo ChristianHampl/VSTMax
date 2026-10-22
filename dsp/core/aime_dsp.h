@@ -388,6 +388,11 @@ public:
 	double currentGr () const { return gr; }
 	double takeMaxGr () { double m = maxGr; maxGr = 0; return m; }
 	void reset () { gr = 0; peak.reset (); }
+	void snap ()
+	{
+		makeup.reset (dbToLin (p.makeupDb));
+		mix.reset (p.mix);
+	}
 
 private:
 	Params p;
