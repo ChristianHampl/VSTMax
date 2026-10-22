@@ -36,6 +36,43 @@ def aime_render() -> Path:
     return exe
 
 
+def _plugin_build_dir() -> Path:
+    return Path(os.environ.get("AIME_PLUGIN_BUILD_DIR", ROOT / "build" / "plugins"))
+
+
+def _find_plugin_tool(name: str) -> Path | None:
+    for c in (_plugin_build_dir() / "bin" / "Release", _plugin_build_dir() / "bin" / "Debug", _plugin_build_dir() / "bin"):
+        for exe in (c / name, c / f"{name}.exe"):
+            if exe.exists():
+                return exe
+    return None
+
+
+@pytest.fixture(scope="session")
+def aime_vst3() -> Path:
+    for cfg in ("Release", "Debug"):
+        p = _plugin_build_dir() / "VST3" / cfg / "AIME.vst3"
+        if p.exists():
+            return p
+    pytest.skip("AIME.vst3 nicht gebaut (cmake -S plugins -B build/plugins && cmake --build build/plugins)")
+
+
+@pytest.fixture(scope="session")
+def host_render() -> Path:
+    exe = _find_plugin_tool("aime_host_render")
+    if exe is None:
+        pytest.skip("aime_host_render nicht gebaut")
+    return exe
+
+
+@pytest.fixture(scope="session")
+def link_client() -> Path:
+    exe = _find_plugin_tool("aime_link_client")
+    if exe is None:
+        pytest.skip("aime_link_client nicht gebaut")
+    return exe
+
+
 @pytest.fixture(scope="session")
 def song_dir(tmp_path_factory) -> Path:
     d = tmp_path_factory.mktemp("song")
