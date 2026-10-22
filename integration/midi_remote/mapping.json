@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "vendor": "AIME",
+  "device": "Bridge",
+  "ports": {"to_cubase": "AIME to Cubase", "from_cubase": "AIME from Cubase"},
+  "strips": 8,
+  "strip_channel_base": 0,
+  "volume": {"type": "pitchbend", "fallback_cc": 7},
+  "cc": {"pan": 10, "mute": 20, "solo": 21, "send1": 22, "send2": 23},
+  "global_channel": 15,
+  "global_cc": {"prev_bank": 100, "next_bank": 101, "start": 110, "stop": 111, "record": 112, "cycle": 113},
+  "sysex": {
+    "header": [240, 125, 65, 73],
+    "title": 1,
+    "display": 2,
+    "value": 3,
+    "hello": 4
+  },
+  "params": {"volume": 0, "pan": 1, "mute": 2, "solo": 3, "send1": 4, "send2": 5}
+}
