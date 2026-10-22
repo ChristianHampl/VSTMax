@@ -105,6 +105,8 @@ class LinkServer:
         self._capture_dir: Path | None = None
         self._changed = threading.Condition(self._lock)
         self.stats = {"audio_chunks": 0, "dropped_not_playing": 0, "protocol_errors": 0}
+        self.last_audio = 0.0      # monotonic: letzter aufgenommener Chunk (Wiedergabe läuft)
+        self.last_stopped = 0.0    # monotonic: letzter Chunk mit gestopptem Transport
 
     # ---------------------------------------------------------------- Lebenszyklus
     def start(self) -> "LinkServer":
@@ -309,12 +311,14 @@ class LinkServer:
                     return
                 if not ch.playing or ch.pos < 0:
                     self.stats["dropped_not_playing"] += 1
+                    self.last_stopped = time.monotonic()
                     return
                 s = self._sinks.get(ch.instance)
                 if s is None:
                     s = self._sinks[ch.instance] = _CaptureSink(self._capture_dir / f".{ch.instance:016x}.raw")
                 s.add(ch.pos, ch.samples)
                 self.stats["audio_chunks"] += 1
+                self.last_audio = time.monotonic()
         elif t in (pr.INSTANCE_ADD, pr.INSTANCE_UPDATE):
             d = pr.decode_json(p)
             iid = pr.instance_int(d["instance"])
