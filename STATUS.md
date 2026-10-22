@@ -25,15 +25,22 @@ ausdrücklich als *nicht ausgeführt* markiert.
 | Mastering/Album/Referenz | `test_mastering_album_reference.py` | Ziel-LUFS ±0,5, True Peak ≤ Grenze + 0,1 dB; Überkompressionsschutz verfehlt das Ziel bewusst und dokumentiert das; Album einheitlich ≤ 0,6 LU Streuung, relativer Modus erhält Reihenfolge; Referenzvorschläge gedämpft/begrenzt |
 | Originalschutz | Tests in `test_audio_io.py`, Capture, Watcher, Album | Quellen werden nie überschrieben |
 
-## Windows-Build (GitHub Actions, 22. Oktober 2026, 19:40 Uhr Berlin)
+## Windows-Build (GitHub Actions, 22. Oktober 2026)
 
-Auf einem Windows-Runner mit dem Microsoft-Compiler:
+Auf einem Windows-Runner mit dem Microsoft-Compiler, Lauf um 19:40 Uhr Berlin
+([Run 39824617914](https://github.com/ChristianHampl/VSTMax/actions/runs/39824617914)):
 
 - DSP-Tests: 1 von 1 bestanden (CTest).
 - Steinberg-Validator: **141 Tests bestanden, 0 fehlgeschlagen.**
-- pytest: 57 bestanden, 4 fehlgeschlagen. Ursache: Windows sperrt die temporäre Aufnahmedatei, solange
-  sie noch als Memmap offen ist. Behoben durch explizites Schließen vor dem Löschen. Der Installer
-  (`AI-Mix-Engineer-Setup.exe`) wird erst vom nächsten grünen Lauf erzeugt.
+- pytest: 57 bestanden, 4 fehlgeschlagen. Windows sperrt die temporäre Aufnahmedatei, solange sie als
+  Memmap offen ist. Behoben durch explizites Schließen vor dem Löschen.
+
+Zweiter Lauf um 19:50 Uhr Berlin
+([Run 39825463735](https://github.com/ChristianHampl/VSTMax/actions/runs/39825463735)): Validator
+erneut 141/0. pytest 60 bestanden, 1 fehlgeschlagen (`test_link_with_native_hub`): der Testclient
+schlief pro Audioblock 5 ms, Windows rundet das auf etwa 15 ms auf, deshalb lagen nach 1,2 s
+Wandzeit nur 0,44 s Audio vor. Der Client zieht überzogene Pausen jetzt an der Wanduhr nach.
+`AI-Mix-Engineer-Setup.exe` entsteht erst, wenn dieser Lauf grün ist.
 
 Das Setup ist damit noch nicht auf einem Cubase-Rechner installiert worden.
 
@@ -43,8 +50,8 @@ Das Setup ist damit noch nicht auf einem Cubase-Rechner installiert worden.
 |---|---|
 | **Jeder Test in Cubase 15** (Plug-ins laden, Kanalnamen über `IInfoListener`, Capture-Ausrichtung mit Latenzkompensation, Parameter-Push in Cubase, Undo-Verhalten von Cubase, Automation-Interaktion) | Kein Cubase verfügbar. Prüfliste unten. |
 | **MIDI-Remote-Skript in Cubase** | Nur gegen eine Attrappe ausgeführt. Unverifiziert sind insbesondere `bindToPitchBend`, `mOnTitleChange`, `mOnDisplayValueChange` sowie das Bank-Verhalten von `makeMixerBankZone`. Fallback-Schalter stehen im Skript. |
-| **Windows-Build** (`scripts/build.ps1`, MSVC) | Kein Windows verfügbar. Der Code ist portabel geschrieben (Winsock-Pfad, `module_win32.cpp`), wurde aber nicht mit MSVC kompiliert. |
-| **PowerShell-/Batch-Skripte** (`build.ps1`, `install_windows.ps1`, `fetch_vst3sdk.ps1`, `run_tests.ps1`, `start_gui.bat`) | Nicht ausgeführt. |
+| **Setup.exe auf einem echten PC / in Cubase** | Der Microsoft-Compiler und der Validator sind auf dem GitHub-Windows-Runner gelaufen (siehe oben). Installiert und in Cubase geladen wurde das Setup nicht. |
+| **PowerShell-/Batch-Skripte lokal** | `build.ps1` ist auf dem GitHub-Runner gelaufen (Compile, CTest, Validator). `install_windows.ps1`, `fetch_vst3sdk.ps1`, `run_tests.ps1` und `start_gui.bat` wurden hier nicht ausgeführt. |
 | **Parameter-Push im Controller unter Linux** | Das SDK liefert unter Linux keinen UI-Timer (`Timer::create` → nullptr). Unter Windows/macOS vorhanden, dort aber nicht getestet. |
 | **A/B-Wiedergabe** (QtMultimedia) | Kein Audiogerät in der Testumgebung; nur die lautheitsangeglichenen Puffer wurden geprüft. |
 | **Echte Musikaufnahmen** | Alle Audiotests nutzen synthetische Spuren (`engine/synth.py`). Klangqualität mit echten Produktionen ist nicht belegt. |

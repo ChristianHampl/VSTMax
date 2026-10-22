@@ -66,12 +66,28 @@ int main (int argc, char** argv)
 		sinks[k].out = &outMtx;
 		hub.registerController (id, &sinks[k]);
 	}
-	// Echtzeit-Simulation: je 256 Frames ein Chunk pro Instanz, Projektposition fortlaufend
+	// Echtzeit-Simulation: je 256 Frames ein Chunk pro Instanz, Projektposition fortlaufend.
+	// sleep_for rundet unter Windows kurze Pausen auf den Scheduler-Tick (~15 ms) auf. Ein Sleep
+	// pro Chunk lieferte dadurch in 1,2 s Wandzeit nur ~0,44 s Audio, und der Capture-Test riss.
+	// Die Projektzeit folgt der Wanduhr; eine überzogene Pause wird ohne weiteren Sleep nachgezogen.
 	const auto t0 = std::chrono::steady_clock::now ();
+	const auto limit = std::chrono::duration<double> (seconds);
+	const auto chunk = std::chrono::duration_cast<std::chrono::steady_clock::duration> (
+		std::chrono::duration<double> (double (kChunkFrames) / sr));
+	auto deadline = t0;
+	bool pacing = false;
 	int64_t pos = 0;
 	AudioChunk c;
-	while (std::chrono::duration<double> (std::chrono::steady_clock::now () - t0).count () < seconds)
+	while (std::chrono::steady_clock::now () - t0 < limit)
 	{
+		bool capturing = false;
+		for (size_t k = 0; k < slots.size (); ++k)
+			capturing = capturing || slots[k]->capture.load ();
+		if (capturing && !pacing)
+		{
+			deadline = std::chrono::steady_clock::now ();
+			pacing = true;
+		}
 		for (size_t k = 0; k < slots.size (); ++k)
 		{
 			if (!slots[k]->capture.load ())
@@ -90,7 +106,21 @@ int main (int argc, char** argv)
 			slots[k]->ring.push (&c, 1);
 		}
 		pos += kChunkFrames;
-		std::this_thread::sleep_for (std::chrono::microseconds (int64_t (1e6 * kChunkFrames / sr)));
+		const auto now = std::chrono::steady_clock::now ();
+		if (!capturing)
+		{
+			pacing = false;
+			deadline = now;
+			std::this_thread::sleep_for (std::chrono::milliseconds (5));
+			continue;
+		}
+		deadline += chunk;
+		if (deadline > now)
+		{
+			const auto pause = deadline - now;
+			if (pause > std::chrono::milliseconds (2))
+				std::this_thread::sleep_for (pause - std::chrono::milliseconds (1));
+		}
 	}
 	for (size_t k = 0; k < list.size (); ++k)
 	{
