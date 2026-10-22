@@ -40,9 +40,12 @@ Zweiter Lauf um 19:50 Uhr Berlin
 erneut 141/0. pytest 60 bestanden, 1 fehlgeschlagen (`test_link_with_native_hub`): der Testclient
 schlief pro Audioblock 5 ms, Windows rundet das auf etwa 15 ms auf, deshalb lagen nach 1,2 s
 Wandzeit nur 0,44 s Audio vor. Der Client zieht überzogene Pausen jetzt an der Wanduhr nach.
-`AI-Mix-Engineer-Setup.exe` entsteht erst, wenn dieser Lauf grün ist.
 
-Das Setup ist damit noch nicht auf einem Cubase-Rechner installiert worden.
+Dritter Lauf, fertig um 20:04 Uhr Berlin
+([Run 39826687581](https://github.com/ChristianHampl/VSTMax/actions/runs/39826687581)): Job
+`installer` erfolgreich. Artefakt **AI-Mix-Engineer-Setup** (Zip, darin
+`AI-Mix-Engineer-Setup.exe`, 135 MB, NSIS). Die Datei wurde hier nur als Windows-Programm
+erkannt, nicht ausgeführt. Auf einem Cubase-Rechner ist sie nicht installiert worden.
 
 ## Nicht ausgeführt
 
@@ -50,7 +53,7 @@ Das Setup ist damit noch nicht auf einem Cubase-Rechner installiert worden.
 |---|---|
 | **Jeder Test in Cubase 15** (Plug-ins laden, Kanalnamen über `IInfoListener`, Capture-Ausrichtung mit Latenzkompensation, Parameter-Push in Cubase, Undo-Verhalten von Cubase, Automation-Interaktion) | Kein Cubase verfügbar. Prüfliste unten. |
 | **MIDI-Remote-Skript in Cubase** | Nur gegen eine Attrappe ausgeführt. Unverifiziert sind insbesondere `bindToPitchBend`, `mOnTitleChange`, `mOnDisplayValueChange` sowie das Bank-Verhalten von `makeMixerBankZone`. Fallback-Schalter stehen im Skript. |
-| **Setup.exe auf einem echten PC / in Cubase** | Der Microsoft-Compiler und der Validator sind auf dem GitHub-Windows-Runner gelaufen (siehe oben). Installiert und in Cubase geladen wurde das Setup nicht. |
+| **Setup.exe auf einem echten PC / in Cubase** | Die Datei wurde am 22. Oktober 2026 um 20:04 Uhr Berlin vom Windows-Runner erzeugt (Run 39826687581). Installiert und in Cubase geladen wurde sie nicht. |
 | **PowerShell-/Batch-Skripte lokal** | `build.ps1` ist auf dem GitHub-Runner gelaufen (Compile, CTest, Validator). `install_windows.ps1`, `fetch_vst3sdk.ps1`, `run_tests.ps1` und `start_gui.bat` wurden hier nicht ausgeführt. |
 | **Parameter-Push im Controller unter Linux** | Das SDK liefert unter Linux keinen UI-Timer (`Timer::create` → nullptr). Unter Windows/macOS vorhanden, dort aber nicht getestet. |
 | **A/B-Wiedergabe** (QtMultimedia) | Kein Audiogerät in der Testumgebung; nur die lautheitsangeglichenen Puffer wurden geprüft. |
