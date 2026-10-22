@@ -1,0 +1,22 @@
+{
+  "id": "progressive_metal",
+  "name": "Progressive Metal",
+  "extends": "_base",
+  "description": "Transparenz und Dynamik vor Lautheit: Bass als eigenständige Stimme (mehr Obertöne), wenig Gruppenkompression, detailreiche Overheads, gestaffelte Synths/Leads, großzügige Mastering-Dynamik.",
+  "balance_lu": {"bass": -2.0, "overheads": -8.0, "synth": -8.0, "lead_guitar": -1.5, "rhythm_guitar": -4.5},
+  "rules": {
+    "low_end_owner": "kick",
+    "kick_bass_duck_db": 2.5,
+    "parallel_drums": 0.15,
+    "transient_preservation": 0.9,
+    "max_track_gr_db": 6.0,
+    "reverb_amount": 1.0
+  },
+  "eq": {
+    "bass": {"hpf": 35, "lpf": 10000, "moves": [{"type": "bell", "freq": 250, "gain_db": -1.5, "q": 1.2}, {"type": "bell", "freq": 800, "gain_db": 1.5, "q": 1.0}, {"type": "bell", "freq": 2500, "gain_db": 1.5, "q": 1.0}]}
+  },
+  "buses": {"drums": {"comp": {"ratio": 2.0, "target_gr_db": 1.0, "attack_ms": 30, "release_ms": 150, "knee_db": 8}, "saturation_db": 0.5}},
+  "mix_bus": {"comp": {"ratio": 1.5, "target_gr_db": 0.8, "attack_ms": 30, "release_ms": 300, "knee_db": 10}},
+  "mix_target": {"tilt_db_per_oct": -4.5, "crest_min_db": 11.0, "crest_max_db": 20.0},
+  "master": {"target_lufs": -13.0, "max_limiter_gr_db": 3.0, "min_plr_db": 10.0}
+}

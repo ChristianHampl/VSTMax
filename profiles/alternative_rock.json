@@ -1,0 +1,24 @@
+{
+  "id": "alternative_rock",
+  "name": "Alternative Rock",
+  "extends": "_base",
+  "description": "Dynamischer, offener Mix: Lead-Vocal klar vorne, Gitarren mit mehr Mitten und weniger Verzerrungsdichte, Raum und Hall als Gestaltungsmittel, sanfte Bus-Kompression, konservatives Mastering.",
+  "balance_lu": {"lead_vocal": 1.0, "rhythm_guitar": -5.0, "clean_guitar": -4.0, "room": -10.0, "bass": -2.5},
+  "rules": {
+    "low_end_owner": "bass",
+    "kick_bass_duck_db": 1.5,
+    "vocal_guitar_duck_db": 2.0,
+    "parallel_drums": 0.1,
+    "transient_preservation": 0.85,
+    "guitar_double_pan": 0.8,
+    "reverb_amount": 1.3,
+    "harsh_cut_max_db": 3.0
+  },
+  "dynamics": {
+    "lead_vocal": {"comp": {"ratio": 3.0, "target_gr_db": 4.0, "attack_ms": 10, "release_ms": 150, "knee_db": 8}, "gate": false, "deesser": true}
+  },
+  "fx": {"reverb": {"decay_s": 2.3, "predelay_ms": 40, "damping_hz": 7000}},
+  "mix_bus": {"comp": {"ratio": 1.5, "target_gr_db": 1.0, "attack_ms": 30, "release_ms": 300, "knee_db": 10}},
+  "mix_target": {"tilt_db_per_oct": -4.8, "crest_min_db": 11.0, "crest_max_db": 20.0},
+  "master": {"target_lufs": -14.0, "max_limiter_gr_db": 3.0, "min_plr_db": 10.0}
+}

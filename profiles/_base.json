@@ -1,0 +1,99 @@
+{
+  "id": "_base",
+  "name": "Basis (Rock/Metal)",
+  "description": "Gemeinsame Startwerte. Genre-Profile überschreiben gezielt einzelne Werte und Regeln.",
+  "balance_lu": {
+    "kick": -2.0, "snare": -1.5, "toms": -5.0, "hihat": -12.0, "overheads": -9.0, "room": -13.0,
+    "bass": -3.0, "rhythm_guitar": -4.0, "lead_guitar": -2.0, "clean_guitar": -5.0,
+    "lead_vocal": 0.0, "scream_vocal": 0.0, "backing_vocal": -8.0, "synth": -10.0, "other": -12.0
+  },
+  "rules": {
+    "low_end_owner": "kick",
+    "kick_bass_duck_db": 3.0,
+    "vocal_guitar_duck_db": 2.0,
+    "harsh_band_hz": [2500, 5000],
+    "harsh_cut_max_db": 4.0,
+    "mud_band_hz": [200, 450],
+    "mud_cut_max_db": 4.0,
+    "masking_cut_max_db": 3.0,
+    "resonance_cut_max_db": 4.0,
+    "transient_preservation": 0.6,
+    "parallel_drums": 0.25,
+    "max_track_gr_db": 8.0,
+    "guitar_double_pan": 1.0,
+    "single_guitar_pan": 0.35,
+    "lead_guitar_pan": 0.15,
+    "backing_vocal_spread": 0.55,
+    "tom_spread": 0.6,
+    "overhead_width": 1.0,
+    "room_width": 1.0,
+    "drum_perspective": "drummer",
+    "gate_drums": true,
+    "saturation_amount": 1.0,
+    "reverb_amount": 1.0,
+    "deess_vocals": true
+  },
+  "eq": {
+    "kick":          {"hpf": 30,  "lpf": 14000, "moves": [{"type": "bell", "freq": 380, "gain_db": -3.0, "q": 1.2}, {"type": "bell", "freq": 4000, "gain_db": 2.5, "q": 1.0}]},
+    "snare":         {"hpf": 80,  "lpf": 16000, "moves": [{"type": "bell", "freq": 200, "gain_db": 1.5, "q": 1.0}, {"type": "bell", "freq": 900, "gain_db": -1.5, "q": 1.4}, {"type": "highshelf", "freq": 6000, "gain_db": 1.5, "q": 0.7}]},
+    "toms":          {"hpf": 55,  "lpf": 12000, "moves": [{"type": "bell", "freq": 400, "gain_db": -3.0, "q": 1.2}, {"type": "bell", "freq": 3500, "gain_db": 2.0, "q": 1.0}]},
+    "hihat":         {"hpf": 300, "lpf": 18000, "moves": []},
+    "overheads":     {"hpf": 180, "lpf": 18000, "moves": [{"type": "bell", "freq": 2500, "gain_db": -1.0, "q": 1.0}, {"type": "highshelf", "freq": 10000, "gain_db": 1.5, "q": 0.7}]},
+    "room":          {"hpf": 80,  "lpf": 9000,  "moves": [{"type": "bell", "freq": 450, "gain_db": -2.0, "q": 1.0}]},
+    "bass":          {"hpf": 32,  "lpf": 9000,  "moves": [{"type": "bell", "freq": 250, "gain_db": -2.0, "q": 1.2}, {"type": "bell", "freq": 1200, "gain_db": 1.5, "q": 1.0}]},
+    "rhythm_guitar": {"hpf": 90,  "lpf": 11000, "moves": [{"type": "bell", "freq": 300, "gain_db": -1.5, "q": 1.2}, {"type": "bell", "freq": 1500, "gain_db": 0.5, "q": 1.0}]},
+    "lead_guitar":   {"hpf": 120, "lpf": 12000, "moves": [{"type": "bell", "freq": 1800, "gain_db": 1.5, "q": 1.0}]},
+    "clean_guitar":  {"hpf": 100, "lpf": 15000, "moves": [{"type": "bell", "freq": 350, "gain_db": -2.0, "q": 1.0}]},
+    "lead_vocal":    {"hpf": 90,  "lpf": 18000, "moves": [{"type": "bell", "freq": 300, "gain_db": -1.5, "q": 1.0}, {"type": "bell", "freq": 3200, "gain_db": 2.0, "q": 1.0}, {"type": "highshelf", "freq": 10000, "gain_db": 1.5, "q": 0.7}]},
+    "scream_vocal":  {"hpf": 120, "lpf": 15000, "moves": [{"type": "bell", "freq": 400, "gain_db": -2.0, "q": 1.0}, {"type": "bell", "freq": 2000, "gain_db": 1.5, "q": 1.0}]},
+    "backing_vocal": {"hpf": 150, "lpf": 16000, "moves": [{"type": "bell", "freq": 300, "gain_db": -2.0, "q": 1.0}]},
+    "synth":         {"hpf": 120, "lpf": 18000, "moves": [{"type": "bell", "freq": 2500, "gain_db": -1.5, "q": 1.0}]},
+    "other":         {"hpf": 40,  "lpf": 20000, "moves": []}
+  },
+  "dynamics": {
+    "kick":          {"comp": {"ratio": 4.0, "target_gr_db": 4.0, "attack_ms": 12, "release_ms": 70,  "knee_db": 6}, "gate": true},
+    "snare":         {"comp": {"ratio": 4.0, "target_gr_db": 4.0, "attack_ms": 10, "release_ms": 90,  "knee_db": 6}, "gate": true},
+    "toms":          {"comp": {"ratio": 3.0, "target_gr_db": 3.0, "attack_ms": 15, "release_ms": 120, "knee_db": 6}, "gate": true},
+    "hihat":         {"comp": null, "gate": false},
+    "overheads":     {"comp": {"ratio": 2.0, "target_gr_db": 1.5, "attack_ms": 25, "release_ms": 150, "knee_db": 8}, "gate": false},
+    "room":          {"comp": {"ratio": 6.0, "target_gr_db": 6.0, "attack_ms": 5,  "release_ms": 100, "knee_db": 4}, "gate": false},
+    "bass":          {"comp": {"ratio": 4.0, "target_gr_db": 5.0, "attack_ms": 15, "release_ms": 120, "knee_db": 6}, "gate": false},
+    "rhythm_guitar": {"comp": {"ratio": 2.0, "target_gr_db": 1.5, "attack_ms": 20, "release_ms": 150, "knee_db": 8}, "gate": false},
+    "lead_guitar":   {"comp": {"ratio": 3.0, "target_gr_db": 3.0, "attack_ms": 15, "release_ms": 150, "knee_db": 6}, "gate": false},
+    "clean_guitar":  {"comp": {"ratio": 3.0, "target_gr_db": 3.0, "attack_ms": 15, "release_ms": 150, "knee_db": 6}, "gate": false},
+    "lead_vocal":    {"comp": {"ratio": 4.0, "target_gr_db": 5.0, "attack_ms": 8,  "release_ms": 120, "knee_db": 6}, "gate": false, "deesser": true},
+    "scream_vocal":  {"comp": {"ratio": 5.0, "target_gr_db": 5.0, "attack_ms": 5,  "release_ms": 100, "knee_db": 6}, "gate": false, "deesser": true},
+    "backing_vocal": {"comp": {"ratio": 4.0, "target_gr_db": 5.0, "attack_ms": 8,  "release_ms": 120, "knee_db": 6}, "gate": false, "deesser": true},
+    "synth":         {"comp": {"ratio": 2.0, "target_gr_db": 2.0, "attack_ms": 20, "release_ms": 200, "knee_db": 8}, "gate": false},
+    "other":         {"comp": null, "gate": false}
+  },
+  "saturation_db": {
+    "kick": 2.0, "snare": 2.0, "toms": 1.0, "bass": 4.0, "lead_vocal": 1.5, "scream_vocal": 2.0,
+    "room": 3.0, "rhythm_guitar": 0.0, "lead_guitar": 0.0
+  },
+  "fx": {
+    "reverb": {"decay_s": 1.6, "predelay_ms": 25, "damping_hz": 6500},
+    "delay": {"note_beats": 0.75, "feedback": 0.3, "damping_hz": 4500},
+    "sends_db": {
+      "snare": {"reverb": -16},
+      "toms": {"reverb": -20},
+      "lead_vocal": {"reverb": -18, "delay": -22},
+      "scream_vocal": {"reverb": -20, "delay": -26},
+      "backing_vocal": {"reverb": -14},
+      "lead_guitar": {"reverb": -18, "delay": -20},
+      "clean_guitar": {"reverb": -14, "delay": -22},
+      "synth": {"reverb": -16}
+    }
+  },
+  "buses": {
+    "drums":   {"comp": {"ratio": 3.0, "target_gr_db": 2.0, "attack_ms": 20, "release_ms": 120, "knee_db": 6}, "saturation_db": 1.0},
+    "bass":    {"comp": null, "saturation_db": 0.0},
+    "guitars": {"comp": {"ratio": 2.0, "target_gr_db": 1.0, "attack_ms": 30, "release_ms": 200, "knee_db": 8}, "saturation_db": 0.0},
+    "vocals":  {"comp": {"ratio": 2.0, "target_gr_db": 1.5, "attack_ms": 15, "release_ms": 150, "knee_db": 6}, "saturation_db": 0.0},
+    "keys":    {"comp": null, "saturation_db": 0.0},
+    "other":   {"comp": null, "saturation_db": 0.0}
+  },
+  "mix_bus": {"comp": {"ratio": 2.0, "target_gr_db": 1.5, "attack_ms": 30, "release_ms": 200, "knee_db": 6}},
+  "mix_target": {"tilt_db_per_oct": -4.5, "crest_min_db": 9.0, "crest_max_db": 18.0, "headroom_dbfs": -6.0},
+  "master": {"target_lufs": -14.0, "true_peak_db": -1.0, "max_limiter_gr_db": 4.0, "min_plr_db": 8.0, "bus_comp": true, "eq_max_db": 1.5}
+}

@@ -1,0 +1,26 @@
+{
+  "id": "metalcore",
+  "name": "Metalcore",
+  "extends": "_base",
+  "description": "Wechsel zwischen Scream- und Clean-Parts: beide Vocal-Typen gleich priorisiert, Gitarren weichen dynamisch, Synth-/Pad-Ebenen breit hinter den Gitarren, große Delays in Clean-Refrains.",
+  "balance_lu": {"lead_vocal": 0.5, "scream_vocal": 0.0, "backing_vocal": -6.0, "synth": -9.0, "rhythm_guitar": -4.0},
+  "rules": {
+    "low_end_owner": "kick",
+    "kick_bass_duck_db": 4.0,
+    "vocal_guitar_duck_db": 3.0,
+    "parallel_drums": 0.35,
+    "transient_preservation": 0.55,
+    "backing_vocal_spread": 0.75,
+    "reverb_amount": 1.1
+  },
+  "fx": {
+    "reverb": {"decay_s": 2.0, "predelay_ms": 35, "damping_hz": 7000},
+    "delay": {"note_beats": 0.75, "feedback": 0.38, "damping_hz": 4500},
+    "sends_db": {"lead_vocal": {"reverb": -16, "delay": -18}, "scream_vocal": {"reverb": -20, "delay": -24}, "synth": {"reverb": -14}}
+  },
+  "dynamics": {
+    "scream_vocal": {"comp": {"ratio": 6.0, "target_gr_db": 6.0, "attack_ms": 4, "release_ms": 90, "knee_db": 4}, "gate": false, "deesser": true}
+  },
+  "mix_target": {"tilt_db_per_oct": -4.3, "crest_min_db": 8.0, "crest_max_db": 15.0},
+  "master": {"target_lufs": -11.0, "max_limiter_gr_db": 5.0, "min_plr_db": 7.0}
+}

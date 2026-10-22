@@ -1,0 +1,20 @@
+{
+  "id": "heavy_metal",
+  "name": "Heavy Metal",
+  "extends": "_base",
+  "description": "Klassischer Sound: mehr Raum und Overheads, Lead-Vocals deutlich vorne, Leadgitarren prominent, moderate Kompression, mehr Hall auf Snare und Vocals.",
+  "balance_lu": {"lead_vocal": 0.5, "lead_guitar": -1.0, "room": -10.0, "overheads": -7.5, "kick": -3.0},
+  "rules": {
+    "low_end_owner": "bass",
+    "kick_bass_duck_db": 2.0,
+    "parallel_drums": 0.15,
+    "transient_preservation": 0.75,
+    "reverb_amount": 1.3,
+    "lead_guitar_pan": 0.2
+  },
+  "fx": {"reverb": {"decay_s": 2.2, "predelay_ms": 30, "damping_hz": 6000}},
+  "saturation_db": {"room": 4.0},
+  "mix_bus": {"comp": {"ratio": 1.5, "target_gr_db": 1.0, "attack_ms": 30, "release_ms": 250, "knee_db": 8}},
+  "mix_target": {"tilt_db_per_oct": -4.6, "crest_min_db": 10.0, "crest_max_db": 18.0},
+  "master": {"target_lufs": -13.0, "max_limiter_gr_db": 3.5, "min_plr_db": 9.0}
+}
