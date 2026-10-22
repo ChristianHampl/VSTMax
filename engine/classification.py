@@ -225,15 +225,17 @@ def classify(a: TrackAnalysis, name: str = "", samples: np.ndarray | None = None
     if role != "other" and fscore < 0.45:
         conf *= 0.6
         reasons.append(f"Audio-Merkmale passen nur schwach zu {ROLE_LABELS_DE[role]} ({fscore:.2f})")
-    if hints and role not in hints:
-        reasons.append("Audio-Merkmale widersprechen dem Dateinamen")
+    contradiction = bool(hints) and role not in hints
+    if contradiction:
+        conf = min(conf, 0.6)
+        reasons.append("Audio-Merkmale widersprechen dem Dateinamen - bitte Rolle prüfen")
     conf = min(conf, 0.95)
     f = features(a)
     reasons.append(
         f"Schwerpunkt {a.centroid_hz:.0f} Hz, Crest {a.crest_db:.1f} dB, Sustain {f['sustain']:.2f}, "
         f"Harmonizität {f['harm']:.2f}, Pausenanteil {f['silence']:.2f}"
     )
-    return Classification(role, conf, ranked[1:4], reasons, conf < 0.5, source, probs)
+    return Classification(role, conf, ranked[1:4], reasons, conf < 0.5 or contradiction, source, probs)
 
 
 def apply_context(results: dict[str, Classification], analyses: dict[str, TrackAnalysis],

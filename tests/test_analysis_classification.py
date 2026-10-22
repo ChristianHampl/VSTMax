@@ -26,6 +26,14 @@ def test_classification_blind_drums_bass(song_dir):
         assert c.role == EXPECTED[name], (name, c.role)
 
 
+def test_name_contradiction_is_flagged_uncertain(song_dir):
+    _, an = _load(song_dir, "Kick In")
+    c = classify(an, "Vocals Lead")
+    assert c.role != "lead_vocal"
+    assert c.uncertain and c.confidence <= 0.6
+    assert any("widersprechen" in r for r in c.reasons)
+
+
 def test_problem_detection(song_dir):
     _, clipped = _load(song_dir, "Gtr Clipped")
     assert any(p["code"] == "clipping" for p in clipped.problems)
