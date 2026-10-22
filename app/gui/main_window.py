@@ -116,6 +116,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(w)
 
         self.watch_event.connect(self.watch_log.appendPlainText)
+        self.load_project(self.project)
         self._link_timer = QTimer(self)
         self._link_timer.timeout.connect(self.refresh_instances)
         self._link_timer.start(1000)
@@ -365,6 +366,8 @@ class MainWindow(QMainWindow):
         def done(res):
             self._current = None
             self.btn_cancel.setEnabled(False)
+            self.progress.setValue(1000)
+            self.status.setText(f"Fertig: {name}")
             self.append_log(f"✔ {name}")
             on_done(res)
 
