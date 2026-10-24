@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-mix-engineer"
+version = "0.1.0"
+description = "Lokaler AI Mix Engineer für Rock/Metal-Produktionen mit Cubase 15 (VST3, MIDI Remote, Datei-Workflow)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "soundfile>=0.12",
+    "PySide6>=6.6",
+    "mido>=1.3",
+]
+
+[project.optional-dependencies]
+midi = ["python-rtmidi>=1.5"]
+ml = ["onnxruntime>=1.17"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+aime = "app.cli:main"
+aime-gui = "app.main:main"
+
+[tool.setuptools.packages.find]
+include = ["engine*", "app*", "integration*"]
+
+[tool.setuptools.package-data]
+integration = ["protocol/*.json", "midi_remote/*.json", "midi_remote/AIME/Bridge/*.js"]
+app = ["help/*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: längere End-to-End-Tests",
+    "native: benötigt gebaute C++-Komponenten",
+]

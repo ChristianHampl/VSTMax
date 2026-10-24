@@ -1,0 +1,1314 @@
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/build/dsp
+[ 25%] Building CXX object CMakeFiles/aime_dsp_tests.dir/tests/test_dsp.cpp.o
+[ 50%] Building CXX object CMakeFiles/aime_render.dir/tools/aime_render.cpp.o
+[ 75%] Linking CXX executable aime_render
+[100%] Linking CXX executable aime_dsp_tests
+[100%] Built target aime_render
+[100%] Built target aime_dsp_tests
+Internal ctest changing into directory: /workspace/build/dsp
+Test project /workspace/build/dsp
+    Start 1: aime_dsp_tests
+1/1 Test #1: aime_dsp_tests ...................   Passed    2.85 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   2.86 sec
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Could NOT find LIBJACK (missing: LIBJACK_LIBRARIES LIBJACK_INCLUDE_DIR) 
+-- Performing Test SMTG_USE_STDATOMIC_H
+-- Performing Test SMTG_USE_STDATOMIC_H - Failed
+-- [SMTG] Linux architecture name is x86_64-linux.
+-- [SMTG] Setup running moduleinfotool for AIME
+-- [SMTG] Setup running validator for AIME
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done (0.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspace/build/plugins
+[  1%] Building CXX object vst3sdk/CMakeFiles/pluginterfaces.dir/pluginterfaces/base/conststringtable.cpp.o
+[  2%] Building CXX object vst3sdk/CMakeFiles/pluginterfaces.dir/pluginterfaces/base/coreiids.cpp.o
+[  3%] Building CXX object CMakeFiles/aime_link_client.dir/tools/link_client.cpp.o
+[  4%] Building CXX object vst3sdk/CMakeFiles/base.dir/base/source/baseiids.cpp.o
+[  5%] Building CXX object vst3sdk/CMakeFiles/base.dir/base/source/fbuffer.cpp.o
+[  5%] Building CXX object vst3sdk/CMakeFiles/pluginterfaces.dir/pluginterfaces/base/funknown.cpp.o
+[  5%] Building CXX object CMakeFiles/aime_link_client.dir/source/aime_link.cpp.o
+[  6%] Building CXX object vst3sdk/CMakeFiles/pluginterfaces.dir/pluginterfaces/base/ustring.cpp.o
+[  7%] Building CXX object vst3sdk/CMakeFiles/base.dir/base/source/fdebug.cpp.o
+[  7%] Building CXX object vst3sdk/CMakeFiles/base.dir/base/source/fdynlib.cpp.o
+/home/ubuntu/sdk/vst3sdk/pluginterfaces/base/ustring.cpp: In member function ‘bool Steinberg::UString::scanInt(Steinberg::int64&) const’:
+/home/ubuntu/sdk/vst3sdk/pluginterfaces/base/ustring.cpp:228:41: warning: format ‘%lld’ expects argument of type ‘long long int*’, but argument 3 has type ‘Steinberg::int64*’ {aka ‘long int*’} [-Wformat=]
+  228 |         return sscanf (str.data (), "%lld", &value) == 1;
+      |                                      ~~~^   ~~~~~~
+      |                                         |   |
+      |                                         |   Steinberg::int64* {aka long int*}
+      |                                         long long int*
+      |                                      %ld
+/home/ubuntu/sdk/vst3sdk/pluginterfaces/base/ustring.cpp: In member function ‘bool Steinberg::UString::printInt(Steinberg::int64)’:
+/home/ubuntu/sdk/vst3sdk/pluginterfaces/base/ustring.cpp:256:56: warning: format ‘%lld’ expects argument of type ‘long long int’, but argument 4 has type ‘Steinberg::int64’ {aka ‘long int’} [-Wformat=]
+  256 |         auto len = snprintf (utf8Buffer, thisSize, "%lld", value);
+      |                                                     ~~~^   ~~~~~
+      |                                                        |   |
+      |                                                        |   Steinberg::int64 {aka long int}
+      |                                                        long long int
+      |                                                     %ld
+[  8%] Building CXX object vst3sdk/CMakeFiles/base.dir/base/source/fobject.cpp.o
+[  9%] Linking CXX static library ../lib/Release/libpluginterfaces.a
+[  9%] Built target pluginterfaces
+[ 10%] Building CXX object vst3sdk/CMakeFiles/base.dir/base/source/fstreamer.cpp.o
+[ 11%] Building CXX object vst3sdk/CMakeFiles/base.dir/base/source/fstring.cpp.o
+[ 12%] Building CXX object vst3sdk/CMakeFiles/base.dir/base/source/timer.cpp.o
+[ 12%] Building CXX object vst3sdk/CMakeFiles/base.dir/base/source/updatehandler.cpp.o
+/home/ubuntu/sdk/vst3sdk/base/source/fstring.cpp: In static member function ‘static bool Steinberg::ConstString::scanInt64_8(const Steinberg::char8*, Steinberg::int64&, bool)’:
+/home/ubuntu/sdk/vst3sdk/base/source/fstring.cpp:1389:35: warning: format ‘%lld’ expects argument of type ‘long long int*’, but argument 3 has type ‘Steinberg::int64*’ {aka ‘long int*’} [-Wformat=]
+ 1389 |                 if (sscanf (text, "%" FORMAT_INT64A, &value) == 1)
+      |                                                      ~~~~~~
+      |                                                      |
+      |                                                      Steinberg::int64* {aka long int*}
+In file included from /home/ubuntu/sdk/vst3sdk/base/source/fstring.h:21,
+                 from /home/ubuntu/sdk/vst3sdk/base/source/fstring.cpp:18:
+/home/ubuntu/sdk/vst3sdk/pluginterfaces/base/fstrdefs.h:51:27: note: format string is defined here
+   51 | #define FORMAT_INT64A  "lld"
+/home/ubuntu/sdk/vst3sdk/base/source/fstring.cpp: In static member function ‘static bool Steinberg::ConstString::scanUInt64_8(const Steinberg::char8*, Steinberg::uint64&, bool)’:
+/home/ubuntu/sdk/vst3sdk/base/source/fstring.cpp:1415:35: warning: format ‘%llu’ expects argument of type ‘long long unsigned int*’, but argument 3 has type ‘Steinberg::uint64*’ {aka ‘long unsigned int*’} [-Wformat=]
+ 1415 |                 if (sscanf (text, "%" FORMAT_UINT64A, &value) == 1)
+      |                                                       ~~~~~~
+      |                                                       |
+      |                                                       Steinberg::uint64* {aka long unsigned int*}
+/home/ubuntu/sdk/vst3sdk/pluginterfaces/base/fstrdefs.h:52:27: note: format string is defined here
+   52 | #define FORMAT_UINT64A "llu"
+[ 13%] Building CXX object vst3sdk/CMakeFiles/base.dir/base/thread/source/fcondition.cpp.o
+[ 14%] Building CXX object vst3sdk/CMakeFiles/base.dir/base/thread/source/flock.cpp.o
+[ 15%] Linking CXX executable bin/Release/aime_link_client
+[ 15%] Built target aime_link_client
+[ 16%] Linking CXX static library ../lib/Release/libbase.a
+[ 16%] Built target base
+[ 17%] Building CXX object vst3sdk/CMakeFiles/sdk_common.dir/public.sdk/source/common/commoniids.cpp.o
+[ 19%] Building CXX object vst3sdk/CMakeFiles/sdk_common.dir/public.sdk/source/common/commonstringconvert.cpp.o
+[ 19%] Building CXX object vst3sdk/CMakeFiles/sdk_common.dir/public.sdk/source/common/systemclipboard_linux.cpp.o
+[ 20%] Building CXX object vst3sdk/CMakeFiles/sdk_common.dir/public.sdk/source/common/openurl.cpp.o
+[ 20%] Building CXX object vst3sdk/CMakeFiles/sdk_common.dir/public.sdk/source/common/systemclipboard_win32.cpp.o
+[ 21%] Building CXX object vst3sdk/CMakeFiles/sdk_common.dir/public.sdk/source/common/threadchecker_linux.cpp.o
+[ 22%] Building CXX object vst3sdk/CMakeFiles/sdk_common.dir/public.sdk/source/common/threadchecker_win32.cpp.o
+[ 23%] Building CXX object vst3sdk/CMakeFiles/sdk_common.dir/public.sdk/source/common/readfile.cpp.o
+[ 24%] Building CXX object vst3sdk/CMakeFiles/sdk_common.dir/public.sdk/source/vst/vstpresetfile.cpp.o
+[ 25%] Linking CXX static library ../lib/Release/libsdk_common.a
+[ 25%] Built target sdk_common
+[ 25%] Building CXX object vst3sdk/CMakeFiles/sdk_hosting.dir/public.sdk/source/vst/hosting/connectionproxy.cpp.o
+[ 28%] Building CXX object vst3sdk/CMakeFiles/sdk_hosting.dir/public.sdk/source/vst/hosting/eventlist.cpp.o
+[ 28%] Building CXX object vst3sdk/CMakeFiles/sdk_hosting.dir/public.sdk/source/vst/hosting/hostclasses.cpp.o
+[ 28%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/common/pluginview.cpp.o
+[ 29%] Building CXX object vst3sdk/CMakeFiles/sdk_hosting.dir/public.sdk/source/vst/hosting/module.cpp.o
+[ 30%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/main/pluginfactory.cpp.o
+[ 30%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/main/moduleinit.cpp.o
+[ 31%] Building CXX object vst3sdk/CMakeFiles/sdk_hosting.dir/public.sdk/source/vst/hosting/parameterchanges.cpp.o
+[ 32%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/utility/dataexchange.cpp.o
+[ 32%] Building CXX object vst3sdk/CMakeFiles/sdk_hosting.dir/public.sdk/source/vst/hosting/pluginterfacesupport.cpp.o
+[ 33%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/utility/stringconvert.cpp.o
+[ 34%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/utility/systemtime.cpp.o
+[ 35%] Building CXX object vst3sdk/CMakeFiles/sdk_hosting.dir/public.sdk/source/vst/hosting/processdata.cpp.o
+[ 36%] Building CXX object vst3sdk/CMakeFiles/sdk_hosting.dir/public.sdk/source/vst/utility/stringconvert.cpp.o
+[ 37%] Building CXX object vst3sdk/CMakeFiles/sdk_hosting.dir/public.sdk/source/vst/vstinitiids.cpp.o
+[ 38%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/utility/testing.cpp.o
+[ 38%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/utility/vst2persistence.cpp.o
+[ 39%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/vstaudioeffect.cpp.o
+[ 40%] Linking CXX static library ../lib/Release/libsdk_hosting.a
+[ 40%] Built target sdk_hosting
+[ 41%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/vstbus.cpp.o
+[ 42%] Building CXX object vst3sdk/public.sdk/samples/vst-utilities/moduleinfotool/CMakeFiles/moduleinfotool.dir/source/main.cpp.o
+[ 42%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/common/memorystream.cpp.o
+[ 42%] Building CXX object vst3sdk/public.sdk/samples/vst-utilities/moduleinfotool/CMakeFiles/moduleinfotool.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/moduleinfo/moduleinfocreator.cpp.o
+[ 43%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/vstcomponent.cpp.o
+[ 44%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/main/moduleinit.cpp.o
+[ 45%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/moduleinfo/moduleinfoparser.cpp.o
+[ 46%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/vstcomponentbase.cpp.o
+[ 46%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/vsteditcontroller.cpp.o
+[ 47%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/vstinitiids.cpp.o
+[ 48%] Building CXX object vst3sdk/public.sdk/samples/vst-utilities/moduleinfotool/CMakeFiles/moduleinfotool.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/moduleinfo/moduleinfoparser.cpp.o
+[ 49%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/hosting/test/connectionproxytest.cpp.o
+[ 50%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/vstnoteexpressiontypes.cpp.o
+[ 51%] Building CXX object vst3sdk/public.sdk/samples/vst-utilities/moduleinfotool/CMakeFiles/moduleinfotool.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/hosting/module_linux.cpp.o
+[ 52%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/hosting/test/eventlisttest.cpp.o
+[ 53%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/vstparameters.cpp.o
+[ 53%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/hosting/test/hostclassestest.cpp.o
+[ 54%] Building CXX object vst3sdk/CMakeFiles/sdk.dir/public.sdk/source/vst/vstrepresentation.cpp.o
+[ 55%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/hosting/test/miditovsttest.cpp.o
+[ 55%] Linking CXX static library ../lib/Release/libsdk.a
+[ 56%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/hosting/test/parameterchangestest.cpp.o
+[ 57%] Linking CXX executable ../../../../../bin/Release/moduleinfotool
+[ 57%] Built target sdk
+[ 58%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/hosting/test/pluginterfacesupporttest.cpp.o
+[ 58%] Built target moduleinfotool
+[ 59%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/hosting/test/processdatatest.cpp.o
+[ 59%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/hosting/plugprovider.cpp.o
+[ 60%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/bus/busactivation.cpp.o
+[ 61%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/bus/busconsistency.cpp.o
+[ 62%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/bus/businvalidindex.cpp.o
+[ 63%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/bus/checkaudiobusarrangement.cpp.o
+[ 63%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/bus/scanbusses.cpp.o
+[ 64%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/bus/sidechainarrangement.cpp.o
+[ 65%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/general/editorclasses.cpp.o
+[ 66%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/general/midilearn.cpp.o
+[ 67%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/general/midimapping.cpp.o
+[ 68%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/general/plugcompat.cpp.o
+[ 68%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/general/scanparameters.cpp.o
+[ 69%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/general/suspendresume.cpp.o
+[ 70%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/general/terminit.cpp.o
+[ 71%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/noteexpression/keyswitch.cpp.o
+[ 72%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/noteexpression/noteexpression.cpp.o
+[ 72%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/processing/automation.cpp.o
+[ 73%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/processing/process.cpp.o
+[ 74%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/processing/processcontextrequirements.cpp.o
+[ 75%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/processing/processformat.cpp.o
+[ 76%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/processing/processinputoverwriting.cpp.o
+[ 76%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/processing/processtail.cpp.o
+[ 77%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/processing/processthreaded.cpp.o
+[ 78%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/processing/silenceflags.cpp.o
+[ 79%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/processing/silenceprocessing.cpp.o
+[ 80%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/processing/speakerarrangement.cpp.o
+[ 80%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/processing/variableblocksize.cpp.o
+[ 81%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/state/bypasspersistence.cpp.o
+[ 82%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/state/invalidstatetransition.cpp.o
+[ 83%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/state/repeatidenticalstatetransition.cpp.o
+[ 84%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/state/validstatetransition.cpp.o
+[ 84%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/testbase.cpp.o
+[ 85%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/unit/checkunitstructure.cpp.o
+[ 86%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/unit/scanprograms.cpp.o
+[ 87%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/unit/scanunits.cpp.o
+[ 88%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/testsuite/vsttestsuite.cpp.o
+[ 88%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/utility/testing.cpp.o
+[ 89%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/source/main.cpp.o
+[ 90%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/source/usediids.cpp.o
+[ 91%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/source/validator.cpp.o
+[ 92%] Building CXX object vst3sdk/public.sdk/samples/vst-hosting/validator/CMakeFiles/validator.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/hosting/module_linux.cpp.o
+[ 93%] Linking CXX executable ../../../../../bin/Release/validator
+Running validator selftest:
+
+[ConnectionProxy: Connect and disconnect]
+[Succeeded]
+
+[ConnectionProxy: Disconnect wrong object]
+[Succeeded]
+
+[ConnectionProxy: Send message on UI thread]
+[Succeeded]
+
+[ConnectionProxy: Send message on 2nd thread]
+[Succeeded]
+
+[EventList: Set and get single event]
+[Succeeded]
+
+[EventList: Count events]
+[Succeeded]
+
+[EventList: Overflow]
+[Succeeded]
+
+[EventList: Get unknown event]
+[Succeeded]
+
+[EventList: Resize]
+[Succeeded]
+
+[HostApplication: Create instance of IAttributeList]
+[Succeeded]
+
+[HostApplication: Create instance of IMessage]
+[Succeeded]
+
+[HostAttributeList: Int]
+[Succeeded]
+
+[HostAttributeList: Float]
+[Succeeded]
+
+[HostAttributeList: String]
+[Succeeded]
+
+[HostAttributeList: Binary]
+[Succeeded]
+
+[HostAttributeList: Multiple Set]
+[Succeeded]
+
+[MIDI2VST: midiToEvent noteOn]
+[Succeeded]
+
+[MIDI2VST: midiToEvent noteOff]
+[Succeeded]
+
+[MIDI2VST: midiToEvent polyPressure]
+[Succeeded]
+
+[MIDI2VST: midiToEvent unsupported]
+[Succeeded]
+
+[MIDI2VST: midiToParameter controller]
+[Succeeded]
+
+[MIDI2VST: midiToParameter pitchBend]
+[Succeeded]
+
+[MIDI2VST: midiToParameter channelPressure]
+[Succeeded]
+
+[MIDI2VST: midiToParameter unsupported]
+[Succeeded]
+
+[ParameterValueQueue: Set paramID]
+[Succeeded]
+
+[ParameterValueQueue: Set/get point]
+[Succeeded]
+
+[ParameterValueQueue: Set/get multiple points]
+[Succeeded]
+
+[ParameterValueQueue: Ordered points]
+[Succeeded]
+
+[ParameterValueQueue: Clear]
+[Succeeded]
+
+[ParameterChanges: Parameter count]
+[Succeeded]
+
+[ParameterChanges: Clear queue]
+[Succeeded]
+
+[ParameterChanges: Increase max parameters]
+[Succeeded]
+
+[ParameterChanges: Get parameter data]
+[Succeeded]
+
+[ParameterChangeTransfer: Add/get change]
+[Succeeded]
+
+[ParameterChangeTransfer: Remove changes]
+[Succeeded]
+
+[ParameterChangeTransfer: Transfer changes to]
+[Succeeded]
+
+[ParameterChangeTransfer: Transfer changes from]
+[Succeeded]
+
+[PlugInterfaceSupport: Initial interfaces]
+[Succeeded]
+
+[PlugInterfaceSupport: Add interface]
+[Succeeded]
+
+[PlugInterfaceSupport: Remove interface]
+[Succeeded]
+
+[HostProcessData: No bus]
+[Succeeded]
+
+[HostProcessData: 1 out bus no channels]
+[Succeeded]
+
+[HostProcessData: 1 out bus 2 channels]
+[Succeeded]
+
+[HostProcessData: 1 in & out bus 2 channels]
+[Succeeded]
+
+[HostProcessData: 2 in & out bus dif channels]
+[Succeeded]
+
+[HostProcessData: Set all channel buffers 32]
+[Succeeded]
+
+[HostProcessData: Set all channel buffers 64]
+[Succeeded]
+
+[HostProcessData: Set individual channel buffers 32]
+[Succeeded]
+
+[HostProcessData: Set individual channel buffers 32 combined]
+[Succeeded]
+
+[HostProcessData: Set individual channel buffers 64]
+[Succeeded]
+
+[HostProcessData: Set individual channel buffers 64 combined]
+[Succeeded]
+
+Executed 51 Tests.
+0 failed test(s).
+[ 93%] Built target validator
+[ 93%] Building CXX object CMakeFiles/AIME.dir/source/aime_link.cpp.o
+[ 95%] Building CXX object CMakeFiles/AIME.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/main/linuxmain.cpp.o
+[ 95%] Building CXX object CMakeFiles/AIME.dir/source/entry.cpp.o
+[ 96%] Linking CXX shared module VST3/Release/AIME.vst3/Contents/x86_64-linux/AIME.so
+[SMTG] Validator started...
+* Loading module...
+
+	/workspace/build/plugins/VST3/Release/AIME.vst3
+
+* Check valid bundle structure...
+
+* Scanning classes...
+
+  Factory Info:
+	vendor = AI Mix Engineer (lokal)
+	url = 
+	email = 
+
+  Class Info 0:
+	name = AIME Channel
+	category = Audio Module Class
+	subCategories = Fx|Dynamics|EQ
+	version = 0.1.0
+	sdkVersion = VST 3.8.1
+	cid = 6A1C3E214B7D4F109E2A51C37D0B11A1
+
+  Class Info 1:
+	name = AIME Channel Controller
+	category = Component Controller Class
+	subCategories = 
+	version = 0.1.0
+	sdkVersion = VST 3.8.1
+	cid = 6A1C3E224B7D4F109E2A51C37D0B11A2
+
+  Class Info 2:
+	name = AIME Bus
+	category = Audio Module Class
+	subCategories = Fx|Dynamics
+	version = 0.1.0
+	sdkVersion = VST 3.8.1
+	cid = 6A1C3E314B7D4F109E2A51C37D0B11B1
+
+  Class Info 3:
+	name = AIME Bus Controller
+	category = Component Controller Class
+	subCategories = 
+	version = 0.1.0
+	sdkVersion = VST 3.8.1
+	cid = 6A1C3E324B7D4F109E2A51C37D0B11B2
+
+  Class Info 4:
+	name = AIME Master
+	category = Audio Module Class
+	subCategories = Fx|Mastering
+	version = 0.1.0
+	sdkVersion = VST 3.8.1
+	cid = 6A1C3E414B7D4F109E2A51C37D0B11C1
+
+  Class Info 5:
+	name = AIME Master Controller
+	category = Component Controller Class
+	subCategories = 
+	version = 0.1.0
+	sdkVersion = VST 3.8.1
+	cid = 6A1C3E424B7D4F109E2A51C37D0B11C2
+
+* Checking snapshots...
+
+Info: No snapshots in Bundle.
+
+* Creating tests...
+
+* Running tests...
+
+-------------------------------------------------------------
+TestSuite : AIME Channel
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+TestSuite : General Tests
+-------------------------------------------------------------
+
+[Scan Editor Classes]
+Info:  ===Scan Editor Classes ====================================
+Info:  This component has an edit controller class
+Info:     Controller CID: {6A1C3E22-4B7D-4F10-9E2A-51C37D0B11A2}
+[Succeeded]
+
+[Scan Buses]
+Info:  ===Scan Buses ====================================
+Info:  => Audio Buses: [2 In(s) => 1 Out(s)]
+Info:       In [0]: "Stereo In" (Main-Default Active) 
+Info:       In [1]: "Sidechain" (Aux-Default Active) 
+Info:       Out[0]: "Stereo Out" (Main-Default Active) 
+Info:  => Event Buses: [0 In(s) => 0 Out(s)]
+[Succeeded]
+
+[Scan Parameters]
+Info:  ===Scan Parameters ====================================
+Info:  This component exports 78 parameter(s)
+Info:     Parameter 000 (id=0): [title="Bypass"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 001 (id=1): [title="Input Trim"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 002 (id=2): [title="Phase Invert"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 003 (id=3): [title="Invert Right"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 004 (id=4): [title="DC Filter"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 005 (id=5): [title="Gate On"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 006 (id=6): [title="Gate Threshold"] [unit="dB"] [type = Float, default = 0.333333, unit = 0]
+Info:     Parameter 007 (id=7): [title="Gate Range"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 008 (id=8): [title="Gate Attack"] [unit="ms"] [type = Float, default = 0.258977, unit = 0]
+Info:     Parameter 009 (id=9): [title="Gate Hold"] [unit="ms"] [type = Float, default = 0.080000, unit = 0]
+Info:     Parameter 010 (id=10): [title="Gate Release"] [unit="ms"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 011 (id=11): [title="HPF Freq"] [unit="Hz"] [type = Float, default = 0.000000, unit = 0]
+Info:     Parameter 012 (id=12): [title="HPF 24 dB/oct"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 013 (id=13): [title="LPF Freq"] [unit="Hz"] [type = Float, default = 1.000000, unit = 0]
+Info:     Parameter 014 (id=14): [title="Dyn 1 Sidechain"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 015 (id=15): [title="Dyn 2 Sidechain"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 016 (id=16): [title="Align Delay"] [unit="ms"] [type = Float, default = 0.000000, unit = 0]
+Info:     Parameter 017 (id=20): [title="EQ 1 Type"] [unit=""] [type = Discrete, default = 0.000000, unit = 0]
+Info:     Parameter 018 (id=21): [title="EQ 1 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 019 (id=22): [title="EQ 1 Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 020 (id=23): [title="EQ 1 Q"] [unit=""] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 021 (id=24): [title="EQ 2 Type"] [unit=""] [type = Discrete, default = 0.000000, unit = 0]
+Info:     Parameter 022 (id=25): [title="EQ 2 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 023 (id=26): [title="EQ 2 Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 024 (id=27): [title="EQ 2 Q"] [unit=""] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 025 (id=28): [title="EQ 3 Type"] [unit=""] [type = Discrete, default = 0.000000, unit = 0]
+Info:     Parameter 026 (id=29): [title="EQ 3 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 027 (id=30): [title="EQ 3 Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 028 (id=31): [title="EQ 3 Q"] [unit=""] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 029 (id=32): [title="EQ 4 Type"] [unit=""] [type = Discrete, default = 0.000000, unit = 0]
+Info:     Parameter 030 (id=33): [title="EQ 4 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 031 (id=34): [title="EQ 4 Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 032 (id=35): [title="EQ 4 Q"] [unit=""] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 033 (id=36): [title="EQ 5 Type"] [unit=""] [type = Discrete, default = 0.000000, unit = 0]
+Info:     Parameter 034 (id=37): [title="EQ 5 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 035 (id=38): [title="EQ 5 Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 036 (id=39): [title="EQ 5 Q"] [unit=""] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 037 (id=40): [title="EQ 6 Type"] [unit=""] [type = Discrete, default = 0.000000, unit = 0]
+Info:     Parameter 038 (id=41): [title="EQ 6 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 039 (id=42): [title="EQ 6 Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 040 (id=43): [title="EQ 6 Q"] [unit=""] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 041 (id=44): [title="EQ 7 Type"] [unit=""] [type = Discrete, default = 0.000000, unit = 0]
+Info:     Parameter 042 (id=45): [title="EQ 7 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 043 (id=46): [title="EQ 7 Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 044 (id=47): [title="EQ 7 Q"] [unit=""] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 045 (id=48): [title="EQ 8 Type"] [unit=""] [type = Discrete, default = 0.000000, unit = 0]
+Info:     Parameter 046 (id=49): [title="EQ 8 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 047 (id=50): [title="EQ 8 Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 048 (id=51): [title="EQ 8 Q"] [unit=""] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 049 (id=60): [title="DYN 1 On"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 050 (id=61): [title="DYN 1 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 051 (id=62): [title="DYN 1 Q"] [unit=""] [type = Float, default = 0.573064, unit = 0]
+Info:     Parameter 052 (id=63): [title="DYN 1 Threshold"] [unit="dB"] [type = Float, default = 0.625000, unit = 0]
+Info:     Parameter 053 (id=64): [title="DYN 1 Range"] [unit="dB"] [type = Float, default = 0.250000, unit = 0]
+Info:     Parameter 054 (id=65): [title="DYN 2 On"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 055 (id=66): [title="DYN 2 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 056 (id=67): [title="DYN 2 Q"] [unit=""] [type = Float, default = 0.573064, unit = 0]
+Info:     Parameter 057 (id=68): [title="DYN 2 Threshold"] [unit="dB"] [type = Float, default = 0.625000, unit = 0]
+Info:     Parameter 058 (id=69): [title="DYN 2 Range"] [unit="dB"] [type = Float, default = 0.250000, unit = 0]
+Info:     Parameter 059 (id=70): [title="Comp On"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 060 (id=71): [title="Comp Threshold"] [unit="dB"] [type = Float, default = 0.666667, unit = 0]
+Info:     Parameter 061 (id=72): [title="Comp Ratio"] [unit=":1"] [type = Float, default = 0.462756, unit = 0]
+Info:     Parameter 062 (id=73): [title="Comp Attack"] [unit="ms"] [type = Float, default = 0.605872, unit = 0]
+Info:     Parameter 063 (id=74): [title="Comp Release"] [unit="ms"] [type = Float, default = 0.530430, unit = 0]
+Info:     Parameter 064 (id=75): [title="Comp Knee"] [unit="dB"] [type = Float, default = 0.250000, unit = 0]
+Info:     Parameter 065 (id=76): [title="Comp Makeup"] [unit="dB"] [type = Float, default = 0.333333, unit = 0]
+Info:     Parameter 066 (id=77): [title="Comp Mix"] [unit=""] [type = Float, default = 1.000000, unit = 0]
+Info:     Parameter 067 (id=80): [title="DeEsser On"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 068 (id=81): [title="DeEsser Freq"] [unit="Hz"] [type = Float, default = 0.564585, unit = 0]
+Info:     Parameter 069 (id=82): [title="DeEsser Threshold"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 070 (id=83): [title="DeEsser Range"] [unit="dB"] [type = Float, default = 0.400000, unit = 0]
+Info:     Parameter 071 (id=85): [title="Saturation Drive"] [unit="dB"] [type = Float, default = 0.000000, unit = 0]
+Info:     Parameter 072 (id=86): [title="Saturation Mix"] [unit=""] [type = Float, default = 1.000000, unit = 0]
+Info:     Parameter 073 (id=90): [title="Output"] [unit="dB"] [type = Float, default = 0.714286, unit = 0]
+Info:     Parameter 074 (id=91): [title="Pan (Stereo)"] [unit=""] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 075 (id=92): [title="Width"] [unit=""] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 076 (id=100): [title="GR Meter"] [unit="dB"] [type = Float, default = 0.000000, unit = 0]
+Info:     Parameter 077 (id=101): [title="Output Meter"] [unit="dB"] [type = Float, default = 0.000000, unit = 0]
+[Succeeded]
+
+[MIDI Mapping]
+Info:  ===MIDI Mapping ====================================
+Info:  No MIDI Mapping interface supplied!
+[Succeeded]
+
+[MIDI Learn]
+Info:  ===MIDI Learn ====================================
+Info:  No MIDI Learn interface supplied!
+[Succeeded]
+
+[Scan Units]
+Info:  ===Scan Units ====================================
+Info:  No units found, while controller implements IUnitInfo !!!
+[Succeeded]
+
+[Scan Programs]
+Info:  ===Scan Programs ====================================
+Info:  This component does not export any programs.
+[Succeeded]
+
+[Terminate/Initialize]
+Info:  ===Terminate/Initialize ====================================
+[Succeeded]
+
+[Check Unit Structure]
+Info:  ===Check Unit Structure ====================================
+Info:  No units found, while controller implements IUnitInfo !!!
+Info:  All units have valid parent IDs.
+[Succeeded]
+
+[Valid State Transition 32bits]
+Info:  ===Valid State Transition 32bits ====================================
+[Succeeded]
+
+[Valid State Transition 64bits]
+Info:  ===Valid State Transition 64bits ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Bus Consistency]
+Info:  ===Bus Consistency ====================================
+[Succeeded]
+
+[Bus Activation]
+Info:  ===Bus Activation ====================================
+Info:     Bus Activation: Input Audio Bus (0) (kMain)
+Info:     Bus Activation: Input Audio Bus (1) (kAux)
+Info:     Bus Activation: Output Audio Bus (0) (kMain)
+[Succeeded]
+
+[Check Audio Bus Arrangement]
+Info:  ===Check Audio Bus Arrangement ====================================
+Info:     Check Input Audio Bus Arrangement (0)
+Info:     Check Input Audio Bus Arrangement (1)
+Info:     Check Output Audio Bus Arrangement (0)
+[Succeeded]
+
+[SideChain Arrangement]
+Info:  ===SideChain Arrangement ====================================
+[Succeeded]
+
+[Suspend/Resume]
+Info:  ===Suspend/Resume ====================================
+[Succeeded]
+
+[Note Expression]
+Info:  ===Note Expression ====================================
+Info:  No Note Expression interface supplied!
+[Succeeded]
+
+[Keyswitch]
+Info:  ===Keyswitch ====================================
+Info:  No Keyswitch interface supplied!
+[Succeeded]
+
+[ProcessContext Requirements]
+Info:  ===ProcessContext Requirements ====================================
+Info:  ProcessContextRequirements:
+Info:   - TransportState
+[Succeeded]
+
+-------------------------------------------------------------
+TestSuite : Single Precision (32 bit) Tests
+-------------------------------------------------------------
+
+[Process Test]
+[Succeeded]
+
+[Process function running in another thread]
+Info:  ===Process function running in another thread ====================================
+[Succeeded]
+
+[Silence Flags]
+Info:  ===Silence Flags ====================================
+[Succeeded]
+
+[Silence Processing]
+Info:  ===Silence Processing ====================================
+Info:  The component reported a wrong silent flag for its output buffer! : output is silent but silenceFlags not set !
+[Succeeded]
+
+[Parameters Flush (no Buffer)]
+Info:  ===Parameters Flush (no Buffer) ====================================
+[Succeeded]
+
+[Parameters Flush 2 (only numChannel==0)]
+Info:  ===Parameters Flush 2 (only numChannel==0) ====================================
+[Succeeded]
+
+[Parameters Flush 2 (no Buffer, no parameter change)]
+Info:  ===Parameters Flush 2 (no Buffer, no parameter change) ====================================
+[Succeeded]
+
+[Variable Block Size]
+Info:  ===Variable Block Size ====================================
+[Succeeded]
+
+[Process Format]
+Info:  ===Process Format ====================================
+Info:  ***Tested Sample Rates***
+Info:        22050 Hz - processed successfully!
+Info:        32000 Hz - processed successfully!
+Info:        44100 Hz - processed successfully!
+Info:        48000 Hz - processed successfully!
+Info:        88200 Hz - processed successfully!
+Info:        96000 Hz - processed successfully!
+Info:       192000 Hz - processed successfully!
+Info:       384000 Hz - processed successfully!
+Info:    1234.5678 Hz - processed successfully!
+Info:    12345.678 Hz - processed successfully!
+Info:    123456.78 Hz - processed successfully!
+Info:    1234567.8 Hz - processed successfully!
+[Succeeded]
+
+[Parameter Bypass persistence]
+Info:  ===Parameter Bypass persistence ====================================
+[Succeeded]
+
+[In: Stereo: 2 Channels, Out: Stereo: 2 Channels]
+Info:  ===In: Stereo: 2 Channels, Out: Stereo: 2 Channels ====================================
+[Succeeded]
+
+[In: Mono: 1 Channels, Out: Mono: 1 Channels]
+Info:  ===In: Mono: 1 Channels, Out: Mono: 1 Channels ====================================
+[Succeeded]
+
+[Accuracy: Block, 1 Parameters, Change every100 Samples]
+Info:  ===Accuracy: Block, 1 Parameters, Change every100 Samples ====================================
+[Succeeded]
+
+[Accuracy: Sample, 1 Parameters, Change every100 Samples]
+Info:  ===Accuracy: Sample, 1 Parameters, Change every100 Samples ====================================
+Info:     Not all points have been read via IParameterChanges
+[Succeeded]
+
+-------------------------------------------------------------
+TestSuite : Double Precision (64 bit) Tests
+-------------------------------------------------------------
+
+[Process Test]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Process function running in another thread]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Silence Flags]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Silence Processing]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Parameters Flush (no Buffer)]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Parameters Flush 2 (only numChannel==0)]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Parameters Flush 2 (no Buffer, no parameter change)]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Variable Block Size]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Process Format]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Parameter Bypass persistence]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[In: Stereo: 2 Channels, Out: Stereo: 2 Channels]
+Info:  ===In: Stereo: 2 Channels, Out: Stereo: 2 Channels ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[In: Mono: 1 Channels, Out: Mono: 1 Channels]
+Info:  ===In: Mono: 1 Channels, Out: Mono: 1 Channels ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Accuracy: Block, 1 Parameters, Change every100 Samples]
+Info:  ===Accuracy: Block, 1 Parameters, Change every100 Samples ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Accuracy: Sample, 1 Parameters, Change every100 Samples]
+Info:  ===Accuracy: Sample, 1 Parameters, Change every100 Samples ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+-------------------------------------------------------------
+TestSuite : AIME Bus
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+TestSuite : General Tests
+-------------------------------------------------------------
+
+[Scan Editor Classes]
+Info:  ===Scan Editor Classes ====================================
+Info:  This component has an edit controller class
+Info:     Controller CID: {6A1C3E32-4B7D-4F10-9E2A-51C37D0B11B2}
+[Succeeded]
+
+[Scan Buses]
+Info:  ===Scan Buses ====================================
+Info:  => Audio Buses: [1 In(s) => 1 Out(s)]
+Info:       In [0]: "Stereo In" (Main-Default Active) 
+Info:       Out[0]: "Stereo Out" (Main-Default Active) 
+Info:  => Event Buses: [0 In(s) => 0 Out(s)]
+[Succeeded]
+
+[Scan Parameters]
+Info:  ===Scan Parameters ====================================
+Info:  This component exports 19 parameter(s)
+Info:     Parameter 000 (id=0): [title="Bypass"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 001 (id=1): [title="Input"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 002 (id=2): [title="Comp On"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 003 (id=3): [title="Comp Threshold"] [unit="dB"] [type = Float, default = 0.666667, unit = 0]
+Info:     Parameter 004 (id=4): [title="Comp Ratio"] [unit=":1"] [type = Float, default = 0.231378, unit = 0]
+Info:     Parameter 005 (id=5): [title="Comp Attack"] [unit="ms"] [type = Float, default = 0.750409, unit = 0]
+Info:     Parameter 006 (id=6): [title="Comp Release"] [unit="ms"] [type = Float, default = 0.615689, unit = 0]
+Info:     Parameter 007 (id=7): [title="Comp Knee"] [unit="dB"] [type = Float, default = 0.250000, unit = 0]
+Info:     Parameter 008 (id=8): [title="Comp Makeup"] [unit="dB"] [type = Float, default = 0.333333, unit = 0]
+Info:     Parameter 009 (id=10): [title="Parallel Amount"] [unit=""] [type = Float, default = 0.000000, unit = 0]
+Info:     Parameter 010 (id=11): [title="Parallel Threshold"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 011 (id=12): [title="Parallel Ratio"] [unit=":1"] [type = Float, default = 0.768622, unit = 0]
+Info:     Parameter 012 (id=13): [title="Parallel Attack"] [unit="ms"] [type = Float, default = 0.302936, unit = 0]
+Info:     Parameter 013 (id=14): [title="Parallel Release"] [unit="ms"] [type = Float, default = 0.462756, unit = 0]
+Info:     Parameter 014 (id=15): [title="Parallel Makeup"] [unit="dB"] [type = Float, default = 0.611111, unit = 0]
+Info:     Parameter 015 (id=16): [title="Parallel Drive"] [unit="dB"] [type = Float, default = 0.125000, unit = 0]
+Info:     Parameter 016 (id=20): [title="Saturation Drive"] [unit="dB"] [type = Float, default = 0.000000, unit = 0]
+Info:     Parameter 017 (id=21): [title="Output"] [unit="dB"] [type = Float, default = 0.714286, unit = 0]
+Info:     Parameter 018 (id=100): [title="GR Meter"] [unit="dB"] [type = Float, default = 0.000000, unit = 0]
+[Succeeded]
+
+[MIDI Mapping]
+Info:  ===MIDI Mapping ====================================
+Info:  No MIDI Mapping interface supplied!
+[Succeeded]
+
+[MIDI Learn]
+Info:  ===MIDI Learn ====================================
+Info:  No MIDI Learn interface supplied!
+[Succeeded]
+
+[Scan Units]
+Info:  ===Scan Units ====================================
+Info:  No units found, while controller implements IUnitInfo !!!
+[Succeeded]
+
+[Scan Programs]
+Info:  ===Scan Programs ====================================
+Info:  This component does not export any programs.
+[Succeeded]
+
+[Terminate/Initialize]
+Info:  ===Terminate/Initialize ====================================
+[Succeeded]
+
+[Check Unit Structure]
+Info:  ===Check Unit Structure ====================================
+Info:  No units found, while controller implements IUnitInfo !!!
+Info:  All units have valid parent IDs.
+[Succeeded]
+
+[Valid State Transition 32bits]
+Info:  ===Valid State Transition 32bits ====================================
+[Succeeded]
+
+[Valid State Transition 64bits]
+Info:  ===Valid State Transition 64bits ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Bus Consistency]
+Info:  ===Bus Consistency ====================================
+[Succeeded]
+
+[Bus Activation]
+Info:  ===Bus Activation ====================================
+Info:     Bus Activation: Input Audio Bus (0) (kMain)
+Info:     Bus Activation: Output Audio Bus (0) (kMain)
+[Succeeded]
+
+[Check Audio Bus Arrangement]
+Info:  ===Check Audio Bus Arrangement ====================================
+Info:     Check Input Audio Bus Arrangement (0)
+Info:     Check Output Audio Bus Arrangement (0)
+[Succeeded]
+
+[SideChain Arrangement]
+Info:  ===SideChain Arrangement ====================================
+[Succeeded]
+
+[Suspend/Resume]
+Info:  ===Suspend/Resume ====================================
+[Succeeded]
+
+[Note Expression]
+Info:  ===Note Expression ====================================
+Info:  No Note Expression interface supplied!
+[Succeeded]
+
+[Keyswitch]
+Info:  ===Keyswitch ====================================
+Info:  No Keyswitch interface supplied!
+[Succeeded]
+
+[ProcessContext Requirements]
+Info:  ===ProcessContext Requirements ====================================
+Info:  ProcessContextRequirements:
+Info:   - TransportState
+[Succeeded]
+
+-------------------------------------------------------------
+TestSuite : Single Precision (32 bit) Tests
+-------------------------------------------------------------
+
+[Process Test]
+[Succeeded]
+
+[Process function running in another thread]
+Info:  ===Process function running in another thread ====================================
+[Succeeded]
+
+[Silence Flags]
+Info:  ===Silence Flags ====================================
+[Succeeded]
+
+[Silence Processing]
+Info:  ===Silence Processing ====================================
+Info:  The component reported a wrong silent flag for its output buffer! : output is silent but silenceFlags not set !
+[Succeeded]
+
+[Parameters Flush (no Buffer)]
+Info:  ===Parameters Flush (no Buffer) ====================================
+[Succeeded]
+
+[Parameters Flush 2 (only numChannel==0)]
+Info:  ===Parameters Flush 2 (only numChannel==0) ====================================
+[Succeeded]
+
+[Parameters Flush 2 (no Buffer, no parameter change)]
+Info:  ===Parameters Flush 2 (no Buffer, no parameter change) ====================================
+[Succeeded]
+
+[Variable Block Size]
+Info:  ===Variable Block Size ====================================
+[Succeeded]
+
+[Process Format]
+Info:  ===Process Format ====================================
+Info:  ***Tested Sample Rates***
+Info:        22050 Hz - processed successfully!
+Info:        32000 Hz - processed successfully!
+Info:        44100 Hz - processed successfully!
+Info:        48000 Hz - processed successfully!
+Info:        88200 Hz - processed successfully!
+Info:        96000 Hz - processed successfully!
+Info:       192000 Hz - processed successfully!
+Info:       384000 Hz - processed successfully!
+Info:    1234.5678 Hz - processed successfully!
+Info:    12345.678 Hz - processed successfully!
+Info:    123456.78 Hz - processed successfully!
+Info:    1234567.8 Hz - processed successfully!
+[Succeeded]
+
+[Parameter Bypass persistence]
+Info:  ===Parameter Bypass persistence ====================================
+[Succeeded]
+
+[In: Stereo: 2 Channels, Out: Stereo: 2 Channels]
+Info:  ===In: Stereo: 2 Channels, Out: Stereo: 2 Channels ====================================
+[Succeeded]
+
+[In: Mono: 1 Channels, Out: Mono: 1 Channels]
+Info:  ===In: Mono: 1 Channels, Out: Mono: 1 Channels ====================================
+[Succeeded]
+
+[Accuracy: Block, 1 Parameters, Change every100 Samples]
+Info:  ===Accuracy: Block, 1 Parameters, Change every100 Samples ====================================
+[Succeeded]
+
+[Accuracy: Sample, 1 Parameters, Change every100 Samples]
+Info:  ===Accuracy: Sample, 1 Parameters, Change every100 Samples ====================================
+Info:     Not all points have been read via IParameterChanges
+[Succeeded]
+
+-------------------------------------------------------------
+TestSuite : Double Precision (64 bit) Tests
+-------------------------------------------------------------
+
+[Process Test]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Process function running in another thread]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Silence Flags]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Silence Processing]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Parameters Flush (no Buffer)]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Parameters Flush 2 (only numChannel==0)]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Parameters Flush 2 (no Buffer, no parameter change)]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Variable Block Size]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Process Format]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Parameter Bypass persistence]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[In: Stereo: 2 Channels, Out: Stereo: 2 Channels]
+Info:  ===In: Stereo: 2 Channels, Out: Stereo: 2 Channels ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[In: Mono: 1 Channels, Out: Mono: 1 Channels]
+Info:  ===In: Mono: 1 Channels, Out: Mono: 1 Channels ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Accuracy: Block, 1 Parameters, Change every100 Samples]
+Info:  ===Accuracy: Block, 1 Parameters, Change every100 Samples ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Accuracy: Sample, 1 Parameters, Change every100 Samples]
+Info:  ===Accuracy: Sample, 1 Parameters, Change every100 Samples ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+-------------------------------------------------------------
+TestSuite : AIME Master
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+TestSuite : General Tests
+-------------------------------------------------------------
+
+[Scan Editor Classes]
+Info:  ===Scan Editor Classes ====================================
+Info:  This component has an edit controller class
+Info:     Controller CID: {6A1C3E42-4B7D-4F10-9E2A-51C37D0B11C2}
+[Succeeded]
+
+[Scan Buses]
+Info:  ===Scan Buses ====================================
+Info:  => Audio Buses: [1 In(s) => 1 Out(s)]
+Info:       In [0]: "Stereo In" (Main-Default Active) 
+Info:       Out[0]: "Stereo Out" (Main-Default Active) 
+Info:  => Event Buses: [0 In(s) => 0 Out(s)]
+[Succeeded]
+
+[Scan Parameters]
+Info:  ===Scan Parameters ====================================
+Info:  This component exports 34 parameter(s)
+Info:     Parameter 000 (id=0): [title="Bypass"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 001 (id=1): [title="Input Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 002 (id=10): [title="EQ 1 Type"] [unit=""] [type = Discrete, default = 0.000000, unit = 0]
+Info:     Parameter 003 (id=11): [title="EQ 1 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 004 (id=12): [title="EQ 1 Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 005 (id=13): [title="EQ 1 Q"] [unit=""] [type = Float, default = 0.422549, unit = 0]
+Info:     Parameter 006 (id=14): [title="EQ 2 Type"] [unit=""] [type = Discrete, default = 0.000000, unit = 0]
+Info:     Parameter 007 (id=15): [title="EQ 2 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 008 (id=16): [title="EQ 2 Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 009 (id=17): [title="EQ 2 Q"] [unit=""] [type = Float, default = 0.422549, unit = 0]
+Info:     Parameter 010 (id=18): [title="EQ 3 Type"] [unit=""] [type = Discrete, default = 0.000000, unit = 0]
+Info:     Parameter 011 (id=19): [title="EQ 3 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 012 (id=20): [title="EQ 3 Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 013 (id=21): [title="EQ 3 Q"] [unit=""] [type = Float, default = 0.422549, unit = 0]
+Info:     Parameter 014 (id=22): [title="EQ 4 Type"] [unit=""] [type = Discrete, default = 0.000000, unit = 0]
+Info:     Parameter 015 (id=23): [title="EQ 4 Freq"] [unit="Hz"] [type = Float, default = 0.566323, unit = 0]
+Info:     Parameter 016 (id=24): [title="EQ 4 Gain"] [unit="dB"] [type = Float, default = 0.500000, unit = 0]
+Info:     Parameter 017 (id=25): [title="EQ 4 Q"] [unit=""] [type = Float, default = 0.422549, unit = 0]
+Info:     Parameter 018 (id=30): [title="Comp On"] [unit=""] [type = Toggle, default = 0.000000, unit = 0]
+Info:     Parameter 019 (id=31): [title="Comp Threshold"] [unit="dB"] [type = Float, default = 0.666667, unit = 0]
+Info:     Parameter 020 (id=32): [title="Comp Ratio"] [unit=":1"] [type = Float, default = 0.255273, unit = 0]
+Info:     Parameter 021 (id=33): [title="Comp Attack"] [unit="ms"] [type = Float, default = 0.750409, unit = 0]
+Info:     Parameter 022 (id=34): [title="Comp Release"] [unit="ms"] [type = Float, default = 0.652933, unit = 0]
+Info:     Parameter 023 (id=35): [title="Comp Knee"] [unit="dB"] [type = Float, default = 0.333333, unit = 0]
+Info:     Parameter 024 (id=36): [title="Comp Makeup"] [unit="dB"] [type = Float, default = 0.333333, unit = 0]
+Info:     Parameter 025 (id=39): [title="Limiter Drive"] [unit="dB"] [type = Float, default = 0.285714, unit = 0]
+Info:     Parameter 026 (id=40): [title="Limiter On"] [unit=""] [type = Toggle, default = 1.000000, unit = 0]
+Info:     Parameter 027 (id=41): [title="Ceiling (dBTP)"] [unit="dB"] [type = Float, default = 0.833333, unit = 0]
+Info:     Parameter 028 (id=42): [title="Limiter Release"] [unit="ms"] [type = Float, default = 0.468999, unit = 0]
+Info:     Parameter 029 (id=50): [title="Output"] [unit="dB"] [type = Float, default = 0.833333, unit = 0]
+Info:     Parameter 030 (id=100): [title="Momentary LUFS"] [unit="LUFS"] [type = Float, default = 0.000000, unit = 0]
+Info:     Parameter 031 (id=101): [title="Short-term LUFS"] [unit="LUFS"] [type = Float, default = 0.000000, unit = 0]
+Info:     Parameter 032 (id=102): [title="True Peak Max"] [unit="dBTP"] [type = Float, default = 0.000000, unit = 0]
+Info:     Parameter 033 (id=103): [title="Limiter GR"] [unit="dB"] [type = Float, default = 0.000000, unit = 0]
+[Succeeded]
+
+[MIDI Mapping]
+Info:  ===MIDI Mapping ====================================
+Info:  No MIDI Mapping interface supplied!
+[Succeeded]
+
+[MIDI Learn]
+Info:  ===MIDI Learn ====================================
+Info:  No MIDI Learn interface supplied!
+[Succeeded]
+
+[Scan Units]
+Info:  ===Scan Units ====================================
+Info:  No units found, while controller implements IUnitInfo !!!
+[Succeeded]
+
+[Scan Programs]
+Info:  ===Scan Programs ====================================
+Info:  This component does not export any programs.
+[Succeeded]
+
+[Terminate/Initialize]
+Info:  ===Terminate/Initialize ====================================
+[Succeeded]
+
+[Check Unit Structure]
+Info:  ===Check Unit Structure ====================================
+Info:  No units found, while controller implements IUnitInfo !!!
+Info:  All units have valid parent IDs.
+[Succeeded]
+
+[Valid State Transition 32bits]
+Info:  ===Valid State Transition 32bits ====================================
+[Succeeded]
+
+[Valid State Transition 64bits]
+Info:  ===Valid State Transition 64bits ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Bus Consistency]
+Info:  ===Bus Consistency ====================================
+[Succeeded]
+
+[Bus Activation]
+Info:  ===Bus Activation ====================================
+Info:     Bus Activation: Input Audio Bus (0) (kMain)
+Info:     Bus Activation: Output Audio Bus (0) (kMain)
+[Succeeded]
+
+[Check Audio Bus Arrangement]
+Info:  ===Check Audio Bus Arrangement ====================================
+Info:     Check Input Audio Bus Arrangement (0)
+Info:     Check Output Audio Bus Arrangement (0)
+[Succeeded]
+
+[SideChain Arrangement]
+Info:  ===SideChain Arrangement ====================================
+[Succeeded]
+
+[Suspend/Resume]
+Info:  ===Suspend/Resume ====================================
+[Succeeded]
+
+[Note Expression]
+Info:  ===Note Expression ====================================
+Info:  No Note Expression interface supplied!
+[Succeeded]
+
+[Keyswitch]
+Info:  ===Keyswitch ====================================
+Info:  No Keyswitch interface supplied!
+[Succeeded]
+
+[ProcessContext Requirements]
+Info:  ===ProcessContext Requirements ====================================
+Info:  ProcessContextRequirements:
+Info:   - TransportState
+[Succeeded]
+
+-------------------------------------------------------------
+TestSuite : Single Precision (32 bit) Tests
+-------------------------------------------------------------
+
+[Process Test]
+[Succeeded]
+
+[Process function running in another thread]
+Info:  ===Process function running in another thread ====================================
+[Succeeded]
+
+[Silence Flags]
+Info:  ===Silence Flags ====================================
+[Succeeded]
+
+[Silence Processing]
+Info:  ===Silence Processing ====================================
+Info:  The component reported a wrong silent flag for its output buffer! : output is silent but silenceFlags not set !
+[Succeeded]
+
+[Parameters Flush (no Buffer)]
+Info:  ===Parameters Flush (no Buffer) ====================================
+[Succeeded]
+
+[Parameters Flush 2 (only numChannel==0)]
+Info:  ===Parameters Flush 2 (only numChannel==0) ====================================
+[Succeeded]
+
+[Parameters Flush 2 (no Buffer, no parameter change)]
+Info:  ===Parameters Flush 2 (no Buffer, no parameter change) ====================================
+[Succeeded]
+
+[Variable Block Size]
+Info:  ===Variable Block Size ====================================
+[Succeeded]
+
+[Process Format]
+Info:  ===Process Format ====================================
+Info:  ***Tested Sample Rates***
+Info:        22050 Hz - processed successfully!
+Info:        32000 Hz - processed successfully!
+Info:        44100 Hz - processed successfully!
+Info:        48000 Hz - processed successfully!
+Info:        88200 Hz - processed successfully!
+Info:        96000 Hz - processed successfully!
+Info:       192000 Hz - processed successfully!
+Info:       384000 Hz - processed successfully!
+Info:    1234.5678 Hz - processed successfully!
+Info:    12345.678 Hz - processed successfully!
+Info:    123456.78 Hz - processed successfully!
+Info:    1234567.8 Hz - processed successfully!
+[Succeeded]
+
+[Parameter Bypass persistence]
+Info:  ===Parameter Bypass persistence ====================================
+[Succeeded]
+
+[In: Stereo: 2 Channels, Out: Stereo: 2 Channels]
+Info:  ===In: Stereo: 2 Channels, Out: Stereo: 2 Channels ====================================
+[Succeeded]
+
+[In: Mono: 1 Channels, Out: Mono: 1 Channels]
+Info:  ===In: Mono: 1 Channels, Out: Mono: 1 Channels ====================================
+[Succeeded]
+
+[Accuracy: Block, 1 Parameters, Change every100 Samples]
+Info:  ===Accuracy: Block, 1 Parameters, Change every100 Samples ====================================
+[Succeeded]
+
+[Accuracy: Sample, 1 Parameters, Change every100 Samples]
+Info:  ===Accuracy: Sample, 1 Parameters, Change every100 Samples ====================================
+Info:     Not all points have been read via IParameterChanges
+Info:     Not all points have been read via IParameterChanges
+[Succeeded]
+
+-------------------------------------------------------------
+TestSuite : Double Precision (64 bit) Tests
+-------------------------------------------------------------
+
+[Process Test]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Process function running in another thread]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Silence Flags]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Silence Processing]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Parameters Flush (no Buffer)]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Parameters Flush 2 (only numChannel==0)]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Parameters Flush 2 (no Buffer, no parameter change)]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Variable Block Size]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Process Format]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Parameter Bypass persistence]
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[In: Stereo: 2 Channels, Out: Stereo: 2 Channels]
+Info:  ===In: Stereo: 2 Channels, Out: Stereo: 2 Channels ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[In: Mono: 1 Channels, Out: Mono: 1 Channels]
+Info:  ===In: Mono: 1 Channels, Out: Mono: 1 Channels ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Accuracy: Block, 1 Parameters, Change every100 Samples]
+Info:  ===Accuracy: Block, 1 Parameters, Change every100 Samples ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+[Accuracy: Sample, 1 Parameters, Change every100 Samples]
+Info:  ===Accuracy: Sample, 1 Parameters, Change every100 Samples ====================================
+Info:  64bit Audio Processing not supported.
+[Succeeded]
+
+-------------------------------------------------------------
+Result: 141 tests passed, 0 tests failed
+-------------------------------------------------------------
+[SMTG] Validator finished.
+[ 96%] Built target AIME
+[ 97%] Building CXX object CMakeFiles/aime_host_render.dir/tools/host_render.cpp.o
+[ 97%] Building CXX object CMakeFiles/aime_host_render.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/hosting/plugprovider.cpp.o
+[ 99%] Building CXX object CMakeFiles/aime_host_render.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/common/memorystream.cpp.o
+[ 99%] Building CXX object CMakeFiles/aime_host_render.dir/home/ubuntu/sdk/vst3sdk/public.sdk/source/vst/hosting/module_linux.cpp.o
+[100%] Linking CXX executable bin/Release/aime_host_render
+[100%] Built target aime_host_render
+Fertig: build/plugins/VST3/Release/AIME.vst3

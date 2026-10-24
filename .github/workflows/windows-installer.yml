@@ -1,0 +1,46 @@
+# Erzeugt AI-Mix-Engineer-Setup.exe auf einem Windows-Runner (MSVC).
+# Das Plug-in muss mit dem Microsoft-Compiler gebaut sein, damit Cubase es lädt.
+name: Windows-Installer
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - cursor/ai-mix-engineer-1281
+
+jobs:
+  installer:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Plug-ins bauen und prüfen
+        run: powershell -ExecutionPolicy Bypass -File scripts/build.ps1
+
+      - name: Python-Tests
+        run: |
+          python -m pip install -r requirements.txt pytest
+          $env:QT_QPA_PLATFORM = "offscreen"
+          python -m pytest -q
+
+      - name: NSIS
+        run: choco install nsis -y --no-progress
+
+      - name: Installer-Inhalt zusammenstellen
+        run: powershell -ExecutionPolicy Bypass -File installer/stage.ps1
+
+      - name: Setup.exe bauen
+        run: |
+          python -m pip install pynsist==2.8
+          $env:PYTHONPATH = (Get-Location).Path
+          pynsist installer/installer.cfg
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: AI-Mix-Engineer-Setup
+          path: installer/build/AI-Mix-Engineer-Setup.exe
+          if-no-files-found: error

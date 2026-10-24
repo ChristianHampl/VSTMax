@@ -1,0 +1,26 @@
+{
+  "id": "thrash_metal",
+  "name": "Thrash Metal",
+  "extends": "_base",
+  "description": "Straffe, trockene Produktion: knackige Snare im Vordergrund, Gitarren mit leichter Mitten-Absenkung, Bass mit Biss in den oberen Mitten statt Sub-Dominanz, schnelle Release-Zeiten, kaum Hall.",
+  "balance_lu": {"snare": -0.5, "kick": -2.5, "bass": -4.0, "rhythm_guitar": -3.0},
+  "rules": {
+    "low_end_owner": "kick",
+    "kick_bass_duck_db": 3.0,
+    "parallel_drums": 0.2,
+    "transient_preservation": 0.7,
+    "reverb_amount": 0.5
+  },
+  "eq": {
+    "rhythm_guitar": {"hpf": 100, "lpf": 10500, "moves": [{"type": "bell", "freq": 600, "gain_db": -2.0, "q": 0.9}, {"type": "bell", "freq": 2200, "gain_db": 1.0, "q": 1.0}]},
+    "bass": {"hpf": 40, "lpf": 8000, "moves": [{"type": "bell", "freq": 250, "gain_db": -2.5, "q": 1.2}, {"type": "bell", "freq": 1500, "gain_db": 3.0, "q": 1.0}]},
+    "snare": {"hpf": 90, "lpf": 16000, "moves": [{"type": "bell", "freq": 220, "gain_db": 2.0, "q": 1.0}, {"type": "bell", "freq": 5000, "gain_db": 2.5, "q": 1.0}]}
+  },
+  "dynamics": {
+    "snare": {"comp": {"ratio": 4.0, "target_gr_db": 3.0, "attack_ms": 15, "release_ms": 60, "knee_db": 6}, "gate": true}
+  },
+  "saturation_db": {"bass": 6.0, "snare": 3.0},
+  "fx": {"reverb": {"decay_s": 1.1, "predelay_ms": 10, "damping_hz": 6000}},
+  "mix_target": {"tilt_db_per_oct": -4.2, "crest_min_db": 9.0, "crest_max_db": 15.0},
+  "master": {"target_lufs": -12.0, "max_limiter_gr_db": 4.0, "min_plr_db": 8.0}
+}

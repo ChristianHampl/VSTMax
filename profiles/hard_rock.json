@@ -1,0 +1,25 @@
+{
+  "id": "hard_rock",
+  "name": "Hard Rock",
+  "extends": "_base",
+  "description": "Natürlicher, druckvoller Bandsound: Bass besitzt das Sub-Fundament, Kick sitzt darüber, erhaltene Dynamik, Gitarren weniger breit gestaffelt, warme Sättigung, Vocals klar vorne.",
+  "balance_lu": {"lead_vocal": 0.5, "bass": -2.0, "kick": -3.0, "rhythm_guitar": -4.5, "room": -11.0},
+  "rules": {
+    "low_end_owner": "bass",
+    "kick_bass_duck_db": 2.0,
+    "vocal_guitar_duck_db": 2.0,
+    "parallel_drums": 0.15,
+    "transient_preservation": 0.8,
+    "guitar_double_pan": 0.85,
+    "saturation_amount": 1.3,
+    "reverb_amount": 1.1
+  },
+  "eq": {
+    "kick": {"hpf": 30, "lpf": 12000, "moves": [{"type": "bell", "freq": 90, "gain_db": 1.5, "q": 1.2}, {"type": "bell", "freq": 350, "gain_db": -3.0, "q": 1.2}, {"type": "bell", "freq": 2500, "gain_db": 2.0, "q": 1.0}]}
+  },
+  "dynamics": {
+    "rhythm_guitar": {"comp": null, "gate": false}
+  },
+  "mix_target": {"tilt_db_per_oct": -4.6, "crest_min_db": 10.0, "crest_max_db": 18.0},
+  "master": {"target_lufs": -13.0, "max_limiter_gr_db": 3.0, "min_plr_db": 9.0}
+}

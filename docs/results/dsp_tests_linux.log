@@ -1,0 +1,35 @@
+[ RUN ] Biquad-Frequenzgang
+[  OK ] Biquad-Frequenzgang
+[ RUN ] Kompressor-Kennlinie
+[  OK ] Kompressor-Kennlinie
+[ RUN ] Gate/De-Esser/Dyn-Band
+[  OK ] Gate/De-Esser/Dyn-Band
+[ RUN ] Limiter True Peak
+  Limiter musikähnlich sr=44100: Referenz-True-Peak (16x) -0.986 dBTP bei Ceiling -1.0
+  Limiter musikähnlich sr=48000: Referenz-True-Peak (16x) -0.971 dBTP bei Ceiling -1.0
+  Limiter Rausch-Extremfall sr=44100: Referenz-True-Peak (16x) -0.467 dBTP bei Ceiling -1.0
+  Limiter Rausch-Extremfall sr=48000: Referenz-True-Peak (16x) -0.560 dBTP bei Ceiling -1.0
+[  OK ] Limiter True Peak
+[ RUN ] Latenz und Bypass
+[  OK ] Latenz und Bypass
+[ RUN ] Gain-Genauigkeit und Glättung
+[  OK ] Gain-Genauigkeit und Glättung
+[ RUN ] NaN/Inf-Schutz
+[  OK ] NaN/Inf-Schutz
+[ RUN ] Stille, Mono, Stereo, Pan
+[  OK ] Stille, Mono, Stereo, Pan
+[ RUN ] Samplerate-Wechsel
+[  OK ] Samplerate-Wechsel
+[ RUN ] Sättigung phasengleich
+[  OK ] Sättigung phasengleich
+[ RUN ] Lautheitsmessung EBU
+[  OK ] Lautheitsmessung EBU
+[ RUN ] Zustand und Normalisierung
+[  OK ] Zustand und Normalisierung
+[ RUN ] Keine Allokation, CPU
+  CPU (10 s Stereo 48 kHz, Block 256, alle Module aktiv):
+    Channel 0.313 s (3.13 % Echtzeit), Bus 0.392 s (3.92 %), Master 0.121 s (1.21 %)
+  Latenz: Channel 15, Bus 30, Master 84 Samples
+[  OK ] Keine Allokation, CPU
+
+145 Prüfungen, 0 fehlgeschlagen

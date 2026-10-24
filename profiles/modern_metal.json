@@ -1,0 +1,30 @@
+{
+  "id": "modern_metal",
+  "name": "Modern Metal",
+  "extends": "_base",
+  "description": "Dichte, kontrollierte Produktion: Kick besitzt das Sub-Fundament, Bass wird dynamisch zurückgenommen, starke parallele Drum-Kompression, sehr breite Gitarren-Doubles, präsente Vocals mit Delay.",
+  "balance_lu": {"kick": -1.0, "snare": -1.0, "rhythm_guitar": -3.5, "bass": -3.5, "room": -15.0, "overheads": -10.0},
+  "rules": {
+    "low_end_owner": "kick",
+    "kick_bass_duck_db": 4.5,
+    "vocal_guitar_duck_db": 2.5,
+    "parallel_drums": 0.4,
+    "transient_preservation": 0.5,
+    "guitar_double_pan": 1.0,
+    "harsh_cut_max_db": 5.0,
+    "reverb_amount": 0.8
+  },
+  "eq": {
+    "kick": {"hpf": 35, "lpf": 15000, "moves": [{"type": "bell", "freq": 60, "gain_db": 2.0, "q": 1.4}, {"type": "bell", "freq": 400, "gain_db": -4.0, "q": 1.2}, {"type": "bell", "freq": 4500, "gain_db": 3.5, "q": 1.0}]},
+    "rhythm_guitar": {"hpf": 100, "lpf": 10000, "moves": [{"type": "bell", "freq": 250, "gain_db": -2.0, "q": 1.2}, {"type": "bell", "freq": 1200, "gain_db": 1.0, "q": 1.0}]}
+  },
+  "dynamics": {
+    "kick": {"comp": {"ratio": 5.0, "target_gr_db": 5.0, "attack_ms": 10, "release_ms": 60, "knee_db": 4}, "gate": true},
+    "bass": {"comp": {"ratio": 6.0, "target_gr_db": 6.0, "attack_ms": 10, "release_ms": 100, "knee_db": 4}, "gate": false}
+  },
+  "saturation_db": {"bass": 6.0},
+  "fx": {"delay": {"note_beats": 0.75, "feedback": 0.32, "damping_hz": 4000}},
+  "mix_bus": {"comp": {"ratio": 2.0, "target_gr_db": 2.0, "attack_ms": 30, "release_ms": 150, "knee_db": 6}},
+  "mix_target": {"tilt_db_per_oct": -4.2, "crest_min_db": 8.0, "crest_max_db": 14.0},
+  "master": {"target_lufs": -11.0, "max_limiter_gr_db": 5.0, "min_plr_db": 7.0}
+}
