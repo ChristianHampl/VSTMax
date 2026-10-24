@@ -56,7 +56,12 @@ Nachgestellt auf dem Rechner unter `C:\Program Files\AI Mix Engineer` (Installat
 Benutzer). Das Startskript enthält danach nur noch ASCII. Der nächste Fehler auf demselben
 Rechner: `ModuleNotFoundError: No module named 'typing_extensions'` beim Import von soundfile.
 cffi braucht zusätzlich pycparser, mido packaging. Diese drei Räder stehen jetzt in
-`installer/installer.cfg`.
+`installer/installer.cfg`. Das Setup von 22:37 Uhr Berlin (Run 39849516267) enthält sie. Ein erneuter Start öffnete
+kein Fenster. Der Startmenü-Eintrag ruft `pythonw.exe` auf und setzt das Arbeitsverzeichnis
+auf den Text `%HOMEDRIVE%\%HOMEPATH%`, den NSIS nicht als Profilordner auflöst. Ob das die
+Ursache ist, ist hier nicht geprüft. Die Verknüpfung startet jetzt in `$INSTDIR`, Qt-DLLs
+werden vor dem Fenster geladen, und `start.cmd` im Programmordner lässt ein schwarzes
+Fenster offen.
 
 Vierter Lauf, fertig um 20:35 Uhr Berlin
 ([Run 39831321889](https://github.com/ChristianHampl/VSTMax/actions/runs/39831321889)): Job

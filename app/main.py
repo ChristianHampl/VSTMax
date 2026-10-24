@@ -32,9 +32,48 @@ def _show_error(text: str):
             pass
 
 
+def _preload_qt_dlls() -> None:
+    """Qt6Core/Qt6Gui vor dem Plattform-Plug-in laden.
+
+    Python 3.8 sucht DLL-Abhaengigkeiten nicht mehr im PATH. qwindows.dll liegt in
+    plugins/platforms und findet Qt6Gui.dll sonst nicht. Dann beendet sich Qt ohne
+    Python-Ausnahme, und pythonw zeigt kein Fenster.
+    """
+    if os.name != "nt":
+        return
+    import ctypes
+
+    roots = []
+    for parent in Path(__file__).resolve().parents:
+        pkg = parent / "pkgs" / "PySide6"
+        if (pkg / "Qt6Core.dll").is_file():
+            roots.append(pkg)
+            break
+    try:
+        import PySide6
+        roots.append(Path(PySide6.__file__).resolve().parent)
+    except Exception:
+        pass
+    for pkg in roots:
+        if hasattr(os, "add_dll_directory"):
+            os.add_dll_directory(str(pkg))
+        os.environ["PATH"] = str(pkg) + os.pathsep + os.environ.get("PATH", "")
+        for name in ("Qt6Core.dll", "Qt6Gui.dll"):
+            dll = pkg / name
+            if dll.is_file():
+                ctypes.WinDLL(str(dll))
+        plugins = pkg / "plugins"
+        if (plugins / "platforms").is_dir():
+            os.environ["QT_PLUGIN_PATH"] = str(plugins)
+            os.environ["QT_QPA_PLATFORM_PLUGIN_PATH"] = str(plugins / "platforms")
+        return
+
+
 def main():
     splash = None
     try:
+        os.chdir(Path.home())
+        _preload_qt_dlls()
         from PySide6.QtCore import Qt
         from PySide6.QtWidgets import QApplication, QLabel
 

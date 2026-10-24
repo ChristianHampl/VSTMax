@@ -43,6 +43,19 @@ def test_installer_pins_runtime_deps():
         assert pin in cfg
 
 
+def test_shortcut_working_directory_is_install_dir():
+    nsi = open(os.path.abspath(os.path.join(os.path.dirname(ROOT_FILE), "..", "installer", "pyapp.nsi")),
+               encoding="utf-8").read()
+    assert 'SetOutPath "$INSTDIR"' in nsi
+    assert "HOMEDRIVE" not in nsi
+
+
+def test_preload_qt_is_noop_off_windows():
+    from app.main import _preload_qt_dlls
+    assert os.name != "nt"
+    _preload_qt_dlls()
+
+
 def test_preamble_source_is_ascii():
     # pynsist schreibt diese Datei in die Windows-Codepage. Ein Nicht-ASCII-Byte
     # (z. B. ue = FC) macht das Startskript fuer Python 3 unlesbar.
